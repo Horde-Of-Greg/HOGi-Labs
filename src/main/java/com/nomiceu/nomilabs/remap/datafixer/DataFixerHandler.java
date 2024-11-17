@@ -27,7 +27,6 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.registries.ForgeRegistry;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.groovy.util.Arrays;
 
 import com.nomiceu.nomilabs.LabsValues;
@@ -43,7 +42,6 @@ import com.nomiceu.nomilabs.remap.datafixer.walker.BlockEntityWalker;
 import com.nomiceu.nomilabs.remap.datafixer.walker.ChunkWalker;
 import com.nomiceu.nomilabs.remap.datafixer.walker.ItemStackWalker;
 
-import io.sommers.packmode.PMConfig;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenHashMap;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 
@@ -59,9 +57,6 @@ public class DataFixerHandler {
 
     /* Fixes that should be logged */
     public static Map<IFixType, List<DataFix<?>>> neededNewFixes;
-
-    /* Whether Mode is needed for New Fixes */
-    public static boolean modeNeeded = false;
 
     /* Whether fix is available */
     private static boolean fixAvailable = false;
@@ -97,7 +92,6 @@ public class DataFixerHandler {
 
     public static void onWorldLoad(SaveHandler save) {
         checked = false;
-        modeNeeded = false;
         neededNewFixes = null;
         savedLabsVersion = null;
         fixAvailable = true;
@@ -164,12 +158,6 @@ public class DataFixerHandler {
                 MessageType.CONFIRM,
                 Arrays.concat(Components.getIntro(), Components.getIntroAddition()));
 
-        if (modeNeeded) {
-            sendMessage(
-                    MessageType.CONFIRM,
-                    Components.getModeCheck(StringUtils.capitalize(PMConfig.getPackMode())));
-        }
-
         sendMessage(
                 MessageType.NOTIFY,
                 Components.getDoNotExit());
@@ -233,7 +221,6 @@ public class DataFixerHandler {
             for (var fix : fixes) {
                 if (fix.validVersion.apply(DataFixerHandler.worldSavedData.savedFixVersion)) {
                     neededNewFixes.computeIfAbsent(fixType, (key) -> new ObjectArrayList<>()).add(fix);
-                    if (fix.needsMode) modeNeeded = true;
                     NomiLabs.LOGGER.info("- {}: {}", fix.name, fix.description);
                 }
             }

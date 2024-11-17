@@ -25,7 +25,6 @@ import com.nomiceu.nomilabs.LabsValues;
 import com.nomiceu.nomilabs.gregtech.material.registry.LabsMaterials;
 import com.nomiceu.nomilabs.gregtech.recipe.LabsRecipeMaps;
 import com.nomiceu.nomilabs.gregtech.recipe.recipelogic.NaqRecipeLogic;
-import com.nomiceu.nomilabs.util.LabsModeHelper;
 
 import appeng.core.Api;
 import gregicality.multiblocks.api.render.GCYMTextures;
@@ -222,10 +221,7 @@ public abstract class MetaTileEntityNaquadahReactor extends FuelMultiblockContro
         @Override
         protected TraceabilityPredicate getCasingPredicateBottom() {
             Material material;
-            if (LabsModeHelper.isNormal())
-                material = Materials.RutheniumTriniumAmericiumNeutronate;
-            else
-                material = LabsMaterials.Taranium;
+            material = LabsMaterials.Taranium;
             return states(MetaBlocks.COMPRESSED.get(material).getBlock(material));
         }
 

@@ -16,7 +16,6 @@ import org.jetbrains.annotations.Nullable;
 
 import com.nomiceu.nomilabs.gregtech.mixinhelper.ConditionalJEIMultiblock;
 import com.nomiceu.nomilabs.gregtech.recipe.LabsRecipeMaps;
-import com.nomiceu.nomilabs.util.LabsModeHelper;
 
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -103,6 +102,6 @@ public class MetaTileEntityActualizationChamber extends RecipeMapMultiblockContr
 
     @Override
     public boolean shouldShowInJEI() {
-        return LabsModeHelper.isExpert();
+        return true;
     }
 }

@@ -407,15 +407,6 @@ public class LabsConfig {
 
     public static class Advanced {
 
-        @Config.Comment({ "Whether to allow other pack modes, other than 'normal' and 'expert'.",
-                "If this is set to false, the game will crash if other modes are found.",
-                "Only set this to false if you are sure of what you are doing.",
-                "Beware: many mode specific behaviours will break if other pack modes are used!",
-                "[default: false]" })
-        @Config.LangKey("config.nomilabs.advanced.allow_other_modes")
-        @Config.RequiresMcRestart
-        public boolean allowOtherPackModes = false;
-
         @Config.Comment({ "Whether to disable Anvil XP Scaling.",
                 "[default: false]" })
         @Config.LangKey("config.nomilabs.advanced.disable_xp_scaling")
@@ -469,11 +460,6 @@ public class LabsConfig {
         @Config.LangKey("config.nomilabs.advanced.window")
         @Config.Name("minecraft window overrides")
         public final WindowOverrides windowOverrides = new WindowOverrides();
-
-        @Config.Comment({ "Overrides for the Minecraft Difficulty." })
-        @Config.LangKey("config.nomilabs.advanced.difficulty")
-        @Config.Name("minecraft difficulty overrides")
-        public final DifficultyOverrides difficultyOverrides = new DifficultyOverrides();
 
         @Config.Comment({ "List of Regex Patterns to ignore if they are included in the ITEM missing registry list.",
                 "Do not change unless you know what you are doing!",
@@ -582,7 +568,7 @@ public class LabsConfig {
         public LanguageModifyOption languageModifyOption = LanguageModifyOption.LABS;
 
         @Config.Comment({ "Whether to enable Substitutions for the Server Properties MOTD.",
-                "Substitutions: {version} for the Modpack Formatted Version (from 'nomilabs-version.cfg'), {mode} for the Modpack Formatted Mode (from LabsModeHelper & the PackMode Mod).",
+                "Substitutions: {version} for the Modpack Formatted Version (from 'nomilabs-version.cfg')",
                 "Note: Only the First Substitution in the String is Replaced!",
                 "[default: false]" })
         @Config.RequiresMcRestart
@@ -593,7 +579,7 @@ public class LabsConfig {
 
             @Config.Comment({ "Override for the Minecraft Window Title.",
                     "Leave Empty for the Default.",
-                    "Substitutions: {version} for the Modpack Formatted Version (from 'nomilabs-version.cfg'), {mode} for the Modpack Formatted Mode (from LabsModeHelper & the PackMode Mod).",
+                    "Substitutions: {version} for the Modpack Formatted Version (from 'nomilabs-version.cfg')",
                     "Note: Only the First Substitution in the String is Replaced!",
                     "[default: ]" })
             @Config.LangKey("config.nomilabs.advanced.window.window_title")
@@ -733,39 +719,6 @@ public class LabsConfig {
                     "[default: false]" })
             @Config.LangKey("config.nomilabs.advanced.controls_tooltips.show_class")
             public boolean showClass = false;
-        }
-
-        public static class DifficultyOverrides {
-
-            @Config.Comment({ "Whether to Override Difficulty in Normal Mode.",
-                    "[default: false]" })
-            @Config.LangKey("config.nomilabs.advanced.difficulty.enable_normal")
-            @Config.RequiresWorldRestart
-            public boolean overrideDifficultyNormal = false;
-
-            @Config.Comment({ "Whether to Override Difficulty in Expert Mode.",
-                    "[default: false]" })
-            @Config.LangKey("config.nomilabs.advanced.difficulty.enable_expert")
-            @Config.RequiresWorldRestart
-            public boolean overrideDifficultyExpert = false;
-
-            @Config.Comment({
-                    "Difficulty (Locked) Override in Normal Mode. Does Not Apply if overrideDifficultyNormal is set to false!",
-                    "Ordinal of Difficulty. Peaceful = 0, Easy = 1, Normal = 2, Hard = 3.",
-                    "[default: 2]" })
-            @Config.LangKey("config.nomilabs.advanced.difficulty.normal_override")
-            @Config.RequiresWorldRestart
-            @Config.RangeInt(min = 0, max = 3)
-            public int difficultyNormal = 2;
-
-            @Config.Comment({
-                    "Difficulty (Locked) Override in Expert Mode. Does Not Apply if overrideDifficultyExpert is set to false!",
-                    "Ordinal of Difficulty. Peaceful = 0, Easy = 1, Normal = 2, Hard = 3.",
-                    "[default: 2]" })
-            @Config.LangKey("config.nomilabs.advanced.difficulty.expert_override")
-            @Config.RequiresWorldRestart
-            @Config.RangeInt(min = 0, max = 3)
-            public int difficultyExpert = 2;
         }
     }
 

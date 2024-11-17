@@ -3,13 +3,9 @@ package com.nomiceu.nomilabs.gregtech.recipe;
 import java.util.ArrayList;
 import java.util.List;
 
-import net.minecraftforge.fml.common.Loader;
-
 import com.nomiceu.nomilabs.LabsSounds;
 import com.nomiceu.nomilabs.LabsTextures;
-import com.nomiceu.nomilabs.LabsValues;
 import com.nomiceu.nomilabs.config.LabsConfig;
-import com.nomiceu.nomilabs.util.LabsModeHelper;
 
 import gregtech.api.gui.GuiTextures;
 import gregtech.api.gui.widgets.ProgressWidget;
@@ -21,11 +17,9 @@ import gregtech.core.sound.GTSoundEvents;
 public class LabsRecipeMaps {
 
     public static List<RecipeMap<SimpleRecipeBuilder>> MICROVERSE_RECIPES;
-    public static RecipeMap<SimpleRecipeBuilder> CREATIVE_TANK_RECIPES;
     public static List<RecipeMap<FuelRecipeBuilder>> NAQUADAH_REACTOR_RECIPES;
     public static RecipeMap<SimpleRecipeBuilder> ACTUALIZATION_CHAMBER_RECIPES;
     public static RecipeMap<SimpleRecipeBuilder> UNIVERSAL_CRYSTALIZER_RECIPES;
-    public static RecipeMap<DMESimChamberRecipeMapBuilder> DME_SIM_CHAMBER_RECIPES;
     public static RecipeMap<SimpleRecipeBuilder> GROWTH_CHAMBER_RECIPES;
 
     public static void preInit() {
@@ -35,13 +29,6 @@ public class LabsRecipeMaps {
             MICROVERSE_RECIPES.add(i, createMicroverseRecipeMap(i + 1));
         }
 
-        CREATIVE_TANK_RECIPES = new RecipeMap<>("creative_tank_provider", 2, 2, 0, 0, new SimpleRecipeBuilder(),
-                !(oldMultis() || LabsModeHelper.isNormal()))
-                        .setSlotOverlay(false, false, GuiTextures.ATOMIC_OVERLAY_1)
-                        .setSlotOverlay(true, false, GuiTextures.ATOMIC_OVERLAY_2)
-                        .setProgressBar(GuiTextures.PROGRESS_BAR_REPLICATOR, ProgressWidget.MoveType.HORIZONTAL)
-                        .setSound(GTSoundEvents.REPLICATOR);
-
         NAQUADAH_REACTOR_RECIPES = new ArrayList<>();
 
         for (int i = 0; i < 2; i++) {
@@ -49,24 +36,14 @@ public class LabsRecipeMaps {
         }
 
         ACTUALIZATION_CHAMBER_RECIPES = new DownExpandingRecipeMap("actualization_chamber", 2, 20, 0, 0,
-                new SimpleRecipeBuilder(), !(oldMultis() || LabsModeHelper.isExpert()))
+                new SimpleRecipeBuilder(), false)
                         .setSlotOverlay(false, false, GuiTextures.MOLECULAR_OVERLAY_1).setSound(GTSoundEvents.MINER)
                         .setProgressBar(GuiTextures.PROGRESS_BAR_CRYSTALLIZATION, ProgressWidget.MoveType.HORIZONTAL);
 
         UNIVERSAL_CRYSTALIZER_RECIPES = new RecipeMap<>("universal_crystallizer", 9, 1, 1, 0, new SimpleRecipeBuilder(),
-                !(oldMultis() || LabsModeHelper.isExpert()))
+                false)
                         .setSlotOverlay(true, false, GuiTextures.CRYSTAL_OVERLAY).setSound(GTSoundEvents.COMPUTATION)
                         .setProgressBar(GuiTextures.PROGRESS_BAR_CRYSTALLIZATION, ProgressWidget.MoveType.HORIZONTAL);
-
-        if (Loader.isModLoaded(LabsValues.DME_MODID))
-            DME_SIM_CHAMBER_RECIPES = new RecipeMap<>("dme_sim_chamber", 2, 2, 0, 0,
-                    new DMESimChamberRecipeMapBuilder(),
-                    !(oldMultis() || LabsModeHelper.isNormal()))
-                            .setSlotOverlay(false, false, GuiTextures.RESEARCH_STATION_OVERLAY)
-                            .setSlotOverlay(true, false, GuiTextures.RESEARCH_STATION_OVERLAY)
-                            .setProgressBar(GuiTextures.PROGRESS_BAR_CIRCUIT_ASSEMBLER,
-                                    ProgressWidget.MoveType.VERTICAL)
-                            .setSound(GTSoundEvents.COMPUTATION);
 
         GROWTH_CHAMBER_RECIPES = new RecipeMap<>("growth_chamber", 4, 9, 1, 0, new SimpleRecipeBuilder(), !newMultis())
                 .setSlotOverlay(false, false, GuiTextures.SCANNER_OVERLAY)

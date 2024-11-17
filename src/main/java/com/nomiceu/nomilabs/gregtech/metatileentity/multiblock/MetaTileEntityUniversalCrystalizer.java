@@ -22,7 +22,6 @@ import com.nomiceu.nomilabs.LabsValues;
 import com.nomiceu.nomilabs.gregtech.material.registry.LabsMaterials;
 import com.nomiceu.nomilabs.gregtech.mixinhelper.ConditionalJEIMultiblock;
 import com.nomiceu.nomilabs.gregtech.recipe.LabsRecipeMaps;
-import com.nomiceu.nomilabs.util.LabsModeHelper;
 
 import gregicality.multiblocks.api.metatileentity.GCYMRecipeMapMultiblockController;
 import gregicality.multiblocks.api.render.GCYMTextures;
@@ -171,6 +170,6 @@ public class MetaTileEntityUniversalCrystalizer extends GCYMRecipeMapMultiblockC
 
     @Override
     public boolean shouldShowInJEI() {
-        return LabsModeHelper.isExpert();
+        return true;
     }
 }

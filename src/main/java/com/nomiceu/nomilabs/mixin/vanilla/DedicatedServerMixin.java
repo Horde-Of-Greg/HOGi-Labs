@@ -24,8 +24,6 @@ import com.nomiceu.nomilabs.NomiLabs;
 import com.nomiceu.nomilabs.config.LabsConfig;
 import com.nomiceu.nomilabs.config.LabsVersionConfig;
 import com.nomiceu.nomilabs.mixinhelper.DifficultySettableServer;
-import com.nomiceu.nomilabs.util.LabsDifficultyHelper;
-import com.nomiceu.nomilabs.util.LabsModeHelper;
 import com.nomiceu.nomilabs.util.LabsTranslate;
 
 /**
@@ -57,8 +55,7 @@ public abstract class DedicatedServerMixin extends MinecraftServer implements Di
 
     @Inject(method = "getDifficulty", at = @At("HEAD"), cancellable = true)
     public void getLockedDifficulty(CallbackInfoReturnable<EnumDifficulty> cir) {
-        var locked = LabsDifficultyHelper.getLockedDifficulty();
-        if (locked != null) cir.setReturnValue(locked);
+        var locked = EnumDifficulty.byId(2);
     }
 
     @Redirect(method = "init",
@@ -68,16 +65,15 @@ public abstract class DedicatedServerMixin extends MinecraftServer implements Di
         if (!LabsConfig.advanced.serverMotdSubstitutions) return;
 
         NomiLabs.LOGGER.info("Enabling Labs MOTD Substitutions...");
-        instance.setMOTD(s.replace("{version}", LabsVersionConfig.formattedVersion)
-                .replace("{mode}", LabsModeHelper.getFormattedMode()));
+        instance.setMOTD(s.replace("{version}", LabsVersionConfig.formattedVersion));
     }
 
     @SuppressWarnings("LoggingSimilarMessage")
     @Inject(method = "init", at = @At("RETURN"))
     public void changeInitDifficulty(CallbackInfoReturnable<EnumDifficulty> cir) {
-        var locked = LabsDifficultyHelper.getLockedDifficulty();
+        var locked = EnumDifficulty.byId(2);
         var savedDifficulty = this.settings.getIntProperty("difficulty", 1);
-        if (locked != null && savedDifficulty != locked.getId()) {
+        if (savedDifficulty != locked.getId()) {
             NomiLabs.LOGGER.warn("===============================================");
             NomiLabs.LOGGER.warn("============ LABS DIFFICULTY LOCK: ============");
             NomiLabs.LOGGER.warn("-----------------------------------------------");
@@ -86,7 +82,7 @@ public abstract class DedicatedServerMixin extends MinecraftServer implements Di
                     LabsTranslate.translate(EnumDifficulty.byId(savedDifficulty).getTranslationKey()),
                     LabsTranslate.translate(locked.getTranslationKey()));
 
-            NomiLabs.LOGGER.warn("This is because you are on {} mode!", LabsModeHelper.getFormattedMode());
+            NomiLabs.LOGGER.warn("This is because HOGifactory forces peaceful mode");
 
             NomiLabs.LOGGER.warn("-----------------------------------------------");
             NomiLabs.LOGGER.warn("===============================================");

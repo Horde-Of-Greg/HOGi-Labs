@@ -1,9 +1,7 @@
 package com.nomiceu.nomilabs.recipe;
 
 import net.minecraft.init.Blocks;
-import net.minecraftforge.fml.common.Loader;
 
-import com.nomiceu.nomilabs.LabsValues;
 import com.nomiceu.nomilabs.gregtech.recipe.LabsRecipeMaps;
 import com.nomiceu.nomilabs.item.registry.LabsItems;
 
@@ -11,7 +9,6 @@ import gregtech.api.GTValues;
 import gregtech.api.unification.OreDictUnifier;
 import gregtech.api.unification.material.Materials;
 import gregtech.api.unification.ore.OrePrefix;
-import mustapelto.deepmoblearning.common.DMLRegistry;
 
 @SuppressWarnings("unused")
 public class LabsTestRecipes {
@@ -31,11 +28,6 @@ public class LabsTestRecipes {
                     .buildAndRegister();
         }
 
-        LabsRecipeMaps.CREATIVE_TANK_RECIPES.recipeBuilder().duration(1200).EUt(40)
-                .input(Blocks.SAPLING)
-                .output(Blocks.LOG)
-                .buildAndRegister();
-
         for (var recipeBuilder : LabsRecipeMaps.NAQUADAH_REACTOR_RECIPES) {
             recipeBuilder.recipeBuilder()
                     .duration(938)
@@ -54,19 +46,5 @@ public class LabsTestRecipes {
                 .input(Blocks.SAPLING).circuitMeta(1)
                 .output(Blocks.LOG, 128)
                 .buildAndRegister();
-
-        if (Loader.isModLoaded(LabsValues.DME_MODID)) {
-            LabsRecipeMaps.DME_SIM_CHAMBER_RECIPES.recipeBuilder().duration(1200).EUt(40)
-                    .dataItem(DMLRegistry.getDataModels().iterator().next(), 1)
-                    .input(LabsItems.PULSATING_DUST)
-                    .output(Blocks.LOG, 64).output(Blocks.LOG, 64)
-                    .buildAndRegister();
-
-            LabsRecipeMaps.DME_SIM_CHAMBER_RECIPES.recipeBuilder().duration(1200).EUt(40)
-                    .dataItem(DMLRegistry.getDataModels().iterator().next(), 2)
-                    .input(LabsItems.PULSATING_DUST)
-                    .output(Blocks.LOG, 64).output(Blocks.LOG, 64)
-                    .buildAndRegister();
-        }
     }
 }
