@@ -101,12 +101,5 @@ public class LabsElements {
                         .temp(1600, GasTier.MID)
                         .blastStats(VA[HV], 800))
                 .build();
-
-
-
-
-
-
-
     }
 }
