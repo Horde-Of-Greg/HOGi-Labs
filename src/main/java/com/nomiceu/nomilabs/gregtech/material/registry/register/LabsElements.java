@@ -17,10 +17,10 @@ public class LabsElements {
     public static final Element Dc = Elements.add(149, 264, -1, null, "Draconium", "Dc", false);
     public static final Element ADc = Elements.add(149, 264, -1, null, "AwakenedDraconium", "Dc*", false);
     public static final Element Tn = Elements.add(43, 55, -1, null, "Taranium", "Tn", false);
-    public static final Element Sc = Elements.add(21, 45, -1, null, "Scandium", "Sc", false);
-    public static final Element Yb = Elements.add(70, 174, -1, null, "Ytterbium", "Yb", false);
-    public static final Element Pr = Elements.add(59, 141, -1, null, "Praseodymium", "Pr", false);
-    public static final Element Gd = Elements.add(64, 158, -1, null, "Gadolinium", "Gd", false);
+    public static final Element Sc = Elements.add(21, 24, -1, null, "Scandium", "Sc", false);
+    public static final Element Yb = Elements.add(70, 104, -1, null, "Ytterbium", "Yb", false);
+    public static final Element Pr = Elements.add(59, 82, -1, null, "Praseodymium", "Pr", false);
+    public static final Element Gd = Elements.add(64, 94, -1, null, "Gadolinium", "Gd", false);
 
     public static void init() {
         Draconium = new Material.Builder(1, makeLabsName("draconium"))

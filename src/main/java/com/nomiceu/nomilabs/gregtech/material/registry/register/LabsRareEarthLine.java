@@ -46,7 +46,7 @@ public class LabsRareEarthLine {
         VaporousNitricAcid = new Material.Builder(128, makeLabsName("vaporous_nitric_acid"))
                 .gas(new FluidBuilder().temperature(356))
                 .color(0xeaf293)
-                .components(Nitrogen, 1, Hydrogen, 1, Oxygen, 3)
+                .components(Hydrogen, 1, Nitrogen, 1, Oxygen, 3)
                 .build();
     }
 }
