@@ -27,6 +27,10 @@ public class LabsMaterials {
     public static Material AwakenedDraconium; // ID: 2
     public static Material Omnium; // ID: 4
     public static Material Taranium; // ID: 109; HM only
+    public static Material Scandium; // ID: 118
+    public static Material Ytterbium; // ID: 119
+    public static Material Praseodymium; // ID: 120
+    public static Material Gadolinium; // ID: 121
 
     /**
      * Chemical Materials
@@ -123,6 +127,17 @@ public class LabsMaterials {
     public static Material SodiumMethoxide; // ID: 93; HM only
 
     /**
+     * Rare Earth Line Materials
+     */
+
+    public static Material RareEarthOxideConcentrate; // ID: 122
+    public static Material RoastedRareEarthOxideConcentrate; // ID: 123
+    public static Material LeechedRareEarthOxide; // ID: 124
+    public static Material TrivalentRareEarths; // ID: 125
+    public static Material CeriumConcentrate; // ID: 126
+    public static Material DissolvedCeriumConcentrate; // ID: 127
+    public static Material VaporousNitricAcid; // ID: 128
+    /**
      * Microverse Materials
      */
     public static Material Microversium; // ID: 27
@@ -192,6 +207,9 @@ public class LabsMaterials {
 
         /* Platinum Line Materials */
         LabsPlatLine.initPlatLine();
+
+        /* Rare Earth Line Materials */
+        LabsRareEarthLine.initRareEarthLine();
 
         /* Microverse Materials */
         LabsMicroverse.initMicroverse();
