@@ -19,10 +19,10 @@ public class LabsRareEarthLine {
                 .build();
         RoastedRareEarthOxideConcentrate = new Material.Builder(123,
                 makeLabsName("roasted_rare_earth_oxide_concentrate"))
-                .dust()
-                .color(0x182100).iconSet(ROUGH)
-                .flags(DISABLE_DECOMPOSITION)
-                .build();
+                    .dust()
+                    .color(0x182100).iconSet(ROUGH)
+                    .flags(DISABLE_DECOMPOSITION)
+                    .build();
         LeechedRareEarthOxide = new Material.Builder(124, makeLabsName("leeched_rare_earth_oxide"))
                 .dust()
                 .color(0x4c5632).iconSet(DULL)
