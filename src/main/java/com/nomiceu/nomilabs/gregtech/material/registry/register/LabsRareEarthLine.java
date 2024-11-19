@@ -17,7 +17,8 @@ public class LabsRareEarthLine {
                 .color(0x394c04).iconSet(FINE)
                 .flags(DISABLE_DECOMPOSITION)
                 .build();
-        RoastedRareEarthOxideConcentrate = new Material.Builder(123, makeLabsName("roasted_rare_earth_oxide_concentrate"))
+        RoastedRareEarthOxideConcentrate = new Material.Builder(123,
+                makeLabsName("roasted_rare_earth_oxide_concentrate"))
                 .dust()
                 .color(0x182100).iconSet(ROUGH)
                 .flags(DISABLE_DECOMPOSITION)
