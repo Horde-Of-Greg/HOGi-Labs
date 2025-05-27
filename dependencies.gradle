@@ -41,5 +41,9 @@ dependencies {
     api("gregtech:gregtech:2.8.10-beta")
     api("gregicality:GregicalityMultiblocks:1.2.11")
 
-    compileOnly rfg.deobf("curse.maven:nomi-labs-932060:5677263")
+    implementation(rfg.deobf("curse.maven:nomi-labs-932060:5677263"))
+
+    runtimeOnly('com.cleanroommc:configanytime:3.0')
+    runtimeOnly(rfg.deobf("curse.maven:packmode-278398:2567799"))
+
 }
