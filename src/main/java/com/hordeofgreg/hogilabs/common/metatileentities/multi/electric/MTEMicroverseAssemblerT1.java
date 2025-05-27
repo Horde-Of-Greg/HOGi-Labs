@@ -16,6 +16,7 @@ import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.TraceabilityPredicate;
 import gregtech.client.renderer.ICubeRenderer;
+import gregtech.client.renderer.texture.Textures;
 
 public class MTEMicroverseAssemblerT1 extends RecipeMapMultiblockController {
 
@@ -49,5 +50,10 @@ public class MTEMicroverseAssemblerT1 extends RecipeMapMultiblockController {
     @Override
     public MetaTileEntity createMetaTileEntity(IGregTechTileEntity metaTileEntityHolder) {
         return new MTEMicroverseAssemblerT1(this.metaTileEntityId);
+    }
+
+    @Override
+    protected @NotNull ICubeRenderer getFrontOverlay() {
+        return Textures.ASSEMBLER_OVERLAY;
     }
 }
