@@ -7,6 +7,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -16,6 +17,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.hordeofgreg.hogilabs.common.CommonProxy;
+import com.hordeofgreg.hogilabs.common.blocks.LabsMetaBlocks;
 import com.hordeofgreg.hogilabs.common.metatileentities.LabsMetaTileEntities;
 import com.hordeofgreg.hogilabs.config.LabsConfig;
 
@@ -27,17 +30,24 @@ import com.hordeofgreg.hogilabs.config.LabsConfig;
              "required-after:nomilabs;")
 public class HOGiLabs {
 
-    public static final Logger LOGGER = LogManager.getLogger(Tags.MODID);
+    public static final String MODID = Tags.MODID;
+    public static final Logger LOGGER = LogManager.getLogger(MODID);
+
+    @SidedProxy(modId = MODID,
+                clientSide = "com.hordeofgreg.hogilabs.common.ClientProxy",
+                serverSide = "com.hordeofgreg.hogilabs.common.CommonProxy")
+    public static CommonProxy proxy;
 
     @EventHandler
-    // preInit Run before anything else. Read your config, create blocks, items, etc. (Remove if not needed)
     public void preInit(FMLPreInitializationEvent event) {
-        // register to the event bus so that we can listen to events
         MinecraftForge.EVENT_BUS.register(this);
         if (LabsConfig.advanced.activateVerboseLogging) {
             LOGGER.info("I am " + Tags.MODNAME + " + at version " + Tags.VERSION);
         }
+        LabsMetaBlocks.init();
         LabsMetaTileEntities.init();
+
+        proxy.preLoad();
     }
 
     @SubscribeEvent
