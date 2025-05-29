@@ -28,10 +28,11 @@ jobs:
       - name: Setup Build
         uses: ./.github/actions/build_setup
 
+      - name: Grant Permissions to Gradle Wrapper
+        run: chmod +x ./gradlew
+
       - name: Build Project
-        run:
-          chmod +x ./gradlew
-          ./gradlew build --warning-mode all
+        run: ./gradlew build --warning-mode all
 
       - name: Publish to GitHub
         uses: softprops/action-gh-release@v2
