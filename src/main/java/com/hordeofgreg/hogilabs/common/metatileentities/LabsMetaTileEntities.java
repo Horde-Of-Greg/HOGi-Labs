@@ -7,6 +7,8 @@ import com.hordeofgreg.hogilabs.common.metatileentities.multi.generator.fuel.MTE
 import com.hordeofgreg.hogilabs.common.metatileentities.multi.standard.electric.MTEMicroverseAssemblerT1;
 import com.hordeofgreg.hogilabs.config.LabsConfig;
 
+import gregtech.api.GTValues;
+
 public class LabsMetaTileEntities {
 
     public static MTECatGenerator CAT_GENERATOR;
@@ -17,7 +19,7 @@ public class LabsMetaTileEntities {
         MICRO_ASSEMBLER_T1 = registerMetaTileEntity(3101,
                 new MTEMicroverseAssemblerT1(labsId("microverse_assembler_t1")));
         CAT_GENERATOR = registerMetaTileEntity(3102,
-                new MTECatGenerator(labsId("cat_generator")));
+                new MTECatGenerator(labsId("cat_generator"), GTValues.LuV));
 
         if (LabsConfig.advanced.activateVerboseLogging) {
             System.out.println("HOGiLabs MetaTileEntities initialized.");
