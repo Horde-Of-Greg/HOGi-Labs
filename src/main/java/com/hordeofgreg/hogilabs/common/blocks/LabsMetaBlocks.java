@@ -11,6 +11,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.hordeofgreg.hogilabs.common.blocks.block.*;
 import com.hordeofgreg.hogilabs.common.blocks.block.BlockLargeMultiblockCasing;
 
 import gregtech.common.blocks.MetaBlocks;
@@ -20,14 +21,18 @@ public final class LabsMetaBlocks {
     private LabsMetaBlocks() {}
 
     public static BlockLargeMultiblockCasing LARGE_MULTIBLOCK_CASING;
+    public static BlockLargeActiveMultiblockCasing LARGE_ACTIVE_MULTIBLOCK_CASING;
 
     public static void init() {
         LARGE_MULTIBLOCK_CASING = new BlockLargeMultiblockCasing();
         LARGE_MULTIBLOCK_CASING.setRegistryName("large_multiblock_casing");
+        LARGE_ACTIVE_MULTIBLOCK_CASING = new BlockLargeActiveMultiblockCasing();
+        LARGE_ACTIVE_MULTIBLOCK_CASING.setRegistryName("large_active_multiblock_casing");
     }
 
     @SideOnly(Side.CLIENT)
     public static void registerItemModels() {
+        LARGE_ACTIVE_MULTIBLOCK_CASING.onModelRegister();
         registerItemModel(LARGE_MULTIBLOCK_CASING);
     }
 

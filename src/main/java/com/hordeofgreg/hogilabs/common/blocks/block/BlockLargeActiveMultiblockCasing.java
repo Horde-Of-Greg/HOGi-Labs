@@ -10,18 +10,19 @@ import net.minecraft.world.IBlockAccess;
 
 import org.jetbrains.annotations.NotNull;
 
-import gregtech.api.block.VariantBlock;
+import gregtech.api.block.VariantActiveBlock;
 
-public class BlockLargeMultiblockCasing extends VariantBlock<BlockLargeMultiblockCasing.CasingType> {
+public class BlockLargeActiveMultiblockCasing extends
+                                              VariantActiveBlock<BlockLargeActiveMultiblockCasing.ActiveCasingType> {
 
-    public BlockLargeMultiblockCasing() {
+    public BlockLargeActiveMultiblockCasing() {
         super(Material.IRON);
-        setTranslationKey("large_multiblock_casing");
+        setTranslationKey("large_active_multiblock_casing");
         setHardness(5.0f);
         setResistance(10.0f);
         setSoundType(SoundType.METAL);
         setHarvestLevel("wrench", 2);
-        setDefaultState(getState(CasingType.CATERPILLAR_CASING));
+        setDefaultState(getState(ActiveCasingType.CATERPILLAR_ENGINE_INTAKE));
     }
 
     @Override
@@ -30,17 +31,14 @@ public class BlockLargeMultiblockCasing extends VariantBlock<BlockLargeMultibloc
         return false;
     }
 
-    public enum CasingType implements IStringSerializable {
+    public enum ActiveCasingType implements IStringSerializable {
 
-        // Solid casings
-        CATERPILLAR_CASING("caterpillar_casing"),
-
-        // Pipe casings
-        CATERPILLAR_PIPE_CASING("caterpillar_pipe_casing");
+        // Regular casings
+        CATERPILLAR_ENGINE_INTAKE("caterpillar_engine_intake");
 
         private final String name;
 
-        CasingType(String name) {
+        ActiveCasingType(String name) {
             this.name = name;
         }
 

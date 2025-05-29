@@ -11,7 +11,13 @@
       "caterpillar_casing": {
         "model": "minecraft:cube_all",
         "textures": {
-          "all": "gregtech:blocks/casings/large_multiblock_casing/caterpillar_casing"
+          "all": "gregtech:blocks/casings/large_multiblock_casing/solid/caterpillar_casing"
+        }
+      },
+      "caterpillar_pipe_casing": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/casings/large_multiblock_casing/pipe/caterpillar_pipe_casing"
         }
       }
     }

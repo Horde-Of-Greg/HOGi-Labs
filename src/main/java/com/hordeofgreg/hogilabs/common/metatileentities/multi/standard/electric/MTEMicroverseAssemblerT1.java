@@ -1,4 +1,4 @@
-package com.hordeofgreg.hogilabs.common.metatileentities.multi.electric;
+package com.hordeofgreg.hogilabs.common.metatileentities.multi.standard.electric;
 
 import net.minecraft.util.ResourceLocation;
 

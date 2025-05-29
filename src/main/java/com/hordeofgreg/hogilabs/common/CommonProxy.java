@@ -35,6 +35,7 @@ public class CommonProxy {
         IForgeRegistry<Block> registry = event.getRegistry();
 
         registry.register(LabsMetaBlocks.LARGE_MULTIBLOCK_CASING);
+        registry.register(LabsMetaBlocks.LARGE_ACTIVE_MULTIBLOCK_CASING);
     }
 
     @SubscribeEvent
@@ -45,6 +46,7 @@ public class CommonProxy {
         IForgeRegistry<Item> registry = event.getRegistry();
 
         registry.register(createItemBlock(LabsMetaBlocks.LARGE_MULTIBLOCK_CASING, VariantItemBlock::new));
+        registry.register(createItemBlock(LabsMetaBlocks.LARGE_ACTIVE_MULTIBLOCK_CASING, VariantItemBlock::new));
     }
 
     private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {
