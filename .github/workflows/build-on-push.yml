@@ -1,4 +1,4 @@
-name: Build pull request on push
+name: Build pack on push or pull request
 on:
   push:
   pull_request:

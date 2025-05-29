@@ -1,4 +1,4 @@
-name: Java Formatting
+name: Spotless Formatting Check
 
 on:
   push:
