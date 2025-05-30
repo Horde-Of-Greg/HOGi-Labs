@@ -25,5 +25,11 @@ public class LabsFirstDegreeMaterials {
                         .temp(4300, BlastProperty.GasTier.MID)
                         .blastStats(VA[LuV], 35 * 20))
                 .build();
+
+        MolybdenumDisulfide = new Material.Builder(9001, labsId("molybdenum_disulfide"))
+                .dust()
+                .color(0x4b485e).iconSet(MaterialIconSet.FINE)
+                .components(Molybdenum, 1, Sulfur, 2)
+                .build();
     }
 }

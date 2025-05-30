@@ -25,6 +25,16 @@ public class LabsPropertyChange {
 
         // Color
         Rhenium.setMaterialRGB(0xbd4863);
+
+        // Fluid from gas
+        Fluorine.getProperty(PropertyKey.FLUID).enqueueRegistration(FluidStorageKeys.LIQUID,
+                new FluidBuilder()
+                        .temperature(55)
+                        .name("liquid_fluorine")
+                        .translation("gregtech.fluid.liquid_generic"));
+
+        // Formulas
+        Lubricant.setFormula("(C₁₆H₃₂O₂)Si");
     }
 
     public static void initLate() {}
