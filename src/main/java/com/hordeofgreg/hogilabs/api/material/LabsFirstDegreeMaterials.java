@@ -17,12 +17,12 @@ public class LabsFirstDegreeMaterials {
     public static void init() {
         Tungsten25Rhenium = new Material.Builder(9000, labsId("tungsten_25_rhenium"))
                 .ingot().fluid()
-                .color(0x190530).iconSet(MaterialIconSet.METALLIC)
+                .color(0x470918).iconSet(MaterialIconSet.METALLIC)
                 .cableProperties(VA[LuV], 2, 8)
                 .flags(GENERATE_FOIL, GENERATE_PLATE)
                 .components(Tungsten, 3, Rhenium, 1)
                 .blast(builder -> builder
-                        .temp(5200, BlastProperty.GasTier.HIGH)
+                        .temp(4300, BlastProperty.GasTier.MID)
                         .blastStats(VA[LuV], 35 * 20))
                 .build();
     }

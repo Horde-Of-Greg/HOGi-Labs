@@ -24,7 +24,7 @@ public class LabsPropertyChange {
                 .build());
 
         // Color
-        Rhenium.setMaterialRGB(0x4b0f94);
+        Rhenium.setMaterialRGB(0xbd4863);
     }
 
     public static void initLate() {}
