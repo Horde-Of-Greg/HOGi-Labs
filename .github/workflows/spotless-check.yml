@@ -2,6 +2,15 @@ name: Spotless Formatting Check
 
 on:
   push:
+    branches:
+      - master
+    paths-ignore:
+      - ".gitignore"
+      - ".github/**"
+      - "README.md"
+      - "LICENSE"
+      - "CONTRIBUTING.md"
+      - "CODE_OF_CONDUCT.md"
   pull_request:
 
 concurrency:
