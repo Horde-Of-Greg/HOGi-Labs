@@ -6,6 +6,7 @@ import net.minecraftforge.fluids.FluidStack;
 
 import org.jetbrains.annotations.NotNull;
 
+import com.hordeofgreg.hogilabs.api.material.LabsMaterials;
 import com.hordeofgreg.hogilabs.api.render.LabsTextures;
 import com.hordeofgreg.hogilabs.common.blocks.LabsMetaBlocks;
 import com.hordeofgreg.hogilabs.common.blocks.block.BlockLargeActiveMultiblockCasing;
@@ -112,9 +113,10 @@ public class MTECatGenerator extends FuelMultiblockController {
         private final MTECatGenerator catEngine;
         private final int tier;
 
-        private static final FluidStack LUBRICANT_STACK = Materials.Lubricant.getFluid(100);
-        private static final FluidStack BOOSTED_LUBRICANT_STACK = Materials.Lubricant.getFluid(1000);
-        private static final FluidStack LIQUID_FLUORINE_STACK = Materials.Fluorine.getFluid(200);
+        private static final FluidStack BOOSTED_LUBRICANT_STACK = LabsMaterials.HighEfficiencyLubricant.getFluid(50);
+        private static final FluidStack SUPER_LUBRICANT_STACK = LabsMaterials.IndustrialLubricant.getFluid(25);
+        private static final FluidStack LIQUID_FLUORINE_STACK = Materials.Fluorine.getFluid(FluidStorageKeys.LIQUID,
+                200);
         private static final FluidStack LIQUID_OXYGEN_STACK = Materials.Oxygen.getFluid(FluidStorageKeys.LIQUID, 400);
 
         public IndustrialCombustionEngineWorkableHandler(RecipeMapMultiblockController tileEntity) {
@@ -167,7 +169,7 @@ public class MTECatGenerator extends FuelMultiblockController {
 
         protected boolean checkLubricant() {
             IMultipleTankHandler inputTank = catEngine.getInputFluidInventory();
-            FluidStack lubricantStack = isFluorineBoosted ? BOOSTED_LUBRICANT_STACK : LUBRICANT_STACK;
+            FluidStack lubricantStack = isFluorineBoosted ? SUPER_LUBRICANT_STACK : BOOSTED_LUBRICANT_STACK;
             if (lubricantStack.isFluidStackIdentical(inputTank.drain(lubricantStack, false))) {
                 return true;
             } else {
@@ -177,7 +179,7 @@ public class MTECatGenerator extends FuelMultiblockController {
         }
 
         protected void drainLubricant() {
-            FluidStack lubricantStack = isFluorineBoosted ? BOOSTED_LUBRICANT_STACK : LUBRICANT_STACK;
+            FluidStack lubricantStack = isFluorineBoosted ? SUPER_LUBRICANT_STACK : BOOSTED_LUBRICANT_STACK;
             if (totalContinuousRunningTime == 1 || totalContinuousRunningTime % 72 == 0) {
                 IMultipleTankHandler inputTank = catEngine.getInputFluidInventory();
                 inputTank.drain(lubricantStack, true);

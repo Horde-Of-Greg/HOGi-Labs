@@ -1,10 +1,23 @@
+# Multiblock Controllers
 hogilabs.machine.microverse_assembler_t1.name=Microverse Assembler T1
 hogilabs.machine.cat_generator.name=Industrial Combustion Engine
 
+# First degree materials
 hogilabs.material.tungsten_25_rhenium=W-25Re
+hogilabs.material.molybdenum_disulfide=Molybdenum Disulfide
 
+# Second degree materials
+hogilabs.material.lumium_palladium=Lumium-Palladium Dust
+hogilabs.material.recrystallized_rhodium_sulfate=Recrystallized Rhodium Sulfate
+hogilabs.material.high_efficiency_lubricant=High Efficiency Lubricant
+
+# Third degree materials
+hogilabs.material.industrial_lubricant=Industrial Lubricant
+
+# Multiblock Casings
 tile.large_multiblock_casing.caterpillar_casing.name=Industrial Engine Casing
 tile.large_active_multiblock_casing.caterpillar_engine_intake.name=Industrial Engine Intake Casing
 tile.large_multiblock_casing.caterpillar_pipe_casing.name=Industrial Engine Pipe
 
+# Coils
 tile.wire_coil.tungsten_rhenium.name=W-25Re Coil
