@@ -1,5 +1,8 @@
 package com.hordeofgreg.hogilabs;
 
+import static com.hordeofgreg.hogilabs.common.blocks.LabsMetaBlocks.WIRE_COIL;
+import static gregtech.api.GregTechAPI.HEATING_COILS;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
@@ -19,6 +22,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.hordeofgreg.hogilabs.common.CommonProxy;
 import com.hordeofgreg.hogilabs.common.blocks.LabsMetaBlocks;
+import com.hordeofgreg.hogilabs.common.blocks.block.BlockWireCoil;
 import com.hordeofgreg.hogilabs.common.metatileentities.LabsMetaTileEntities;
 import com.hordeofgreg.hogilabs.config.LabsConfig;
 
@@ -46,6 +50,10 @@ public class HOGiLabs {
         }
         LabsMetaBlocks.init();
         LabsMetaTileEntities.init();
+
+        for (BlockWireCoil.CoilType type : BlockWireCoil.CoilType.values()) {
+            HEATING_COILS.put(WIRE_COIL.getState(type), type);
+        }
 
         proxy.preLoad();
     }

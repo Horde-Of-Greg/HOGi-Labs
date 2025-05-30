@@ -22,17 +22,26 @@ public final class LabsMetaBlocks {
 
     public static BlockLargeMultiblockCasing LARGE_MULTIBLOCK_CASING;
     public static BlockLargeActiveMultiblockCasing LARGE_ACTIVE_MULTIBLOCK_CASING;
+    public static BlockWireCoil WIRE_COIL;
 
     public static void init() {
         LARGE_MULTIBLOCK_CASING = new BlockLargeMultiblockCasing();
         LARGE_MULTIBLOCK_CASING.setRegistryName("large_multiblock_casing");
+
         LARGE_ACTIVE_MULTIBLOCK_CASING = new BlockLargeActiveMultiblockCasing();
         LARGE_ACTIVE_MULTIBLOCK_CASING.setRegistryName("large_active_multiblock_casing");
+
+        WIRE_COIL = new BlockWireCoil();
+        WIRE_COIL.setRegistryName("wire_coil");
     }
 
     @SideOnly(Side.CLIENT)
     public static void registerItemModels() {
+        // Active models
         LARGE_ACTIVE_MULTIBLOCK_CASING.onModelRegister();
+        WIRE_COIL.onModelRegister();
+
+        // Static models
         registerItemModel(LARGE_MULTIBLOCK_CASING);
     }
 
