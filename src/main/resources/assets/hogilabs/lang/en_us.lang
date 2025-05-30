@@ -1,1 +1,6 @@
 hogilabs.machine.microverse_assembler_t1.name=Microverse Assembler T1
+hogilabs.machine.cat_generator.name=Industrial Combustion Engine
+
+tile.large_multiblock_casing.caterpillar_casing.name=Industrial Engine Casing
+tile.large_active_multiblock_casing.caterpillar_engine_intake.name=Industrial Engine Intake Casing
+tile.large_multiblock_casing.caterpillar_pipe_casing.name=Industrial Engine Pipe
