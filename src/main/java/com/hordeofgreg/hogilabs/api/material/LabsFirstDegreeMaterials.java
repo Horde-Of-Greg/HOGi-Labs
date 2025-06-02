@@ -31,5 +31,32 @@ public class LabsFirstDegreeMaterials {
                 .color(0x4b485e).iconSet(MaterialIconSet.FINE)
                 .components(Molybdenum, 1, Sulfur, 2)
                 .build();
+
+        NaquadahLight = new Material.Builder(9002, labsId("light_naquadah"))
+                .ingot().fluid().dust()
+                .color(0x3b3c3d).iconSet(MaterialIconSet.METALLIC)
+                .flags(GENERATE_FOIL, GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_DENSE, GENERATE_ROTOR, GENERATE_ROD, GENERATE_FRAME, GENERATE_GEAR, GENERATE_SMALL_GEAR)
+                .blast(builder -> builder
+                        .temp(5300, BlastProperty.GasTier.HIGH)
+                        .blastStats(VA[LuV], 45 * 20))
+                .build();
+
+        NaquadahHeavy = new Material.Builder(9003, labsId("heavy_naquadah"))
+                .ingot().fluid().dust()
+                .color(0x1d1e20).iconSet(MaterialIconSet.METALLIC)
+                .flags(GENERATE_FOIL, GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_DENSE, GENERATE_ROTOR, GENERATE_ROD, GENERATE_FRAME, GENERATE_GEAR, GENERATE_SMALL_GEAR)
+                .blast(builder -> builder
+                        .temp(6300, BlastProperty.GasTier.HIGH)
+                        .blastStats(VA[UV], 50 * 20))
+                .build();
+
+        NaquadahSuperheavy = new Material.Builder(9004, labsId("superheavy_naquadah"))
+                .ingot().fluid().dust()
+                .color(0x050506).iconSet(MaterialIconSet.METALLIC)
+                .flags(GENERATE_FOIL, GENERATE_PLATE, GENERATE_DOUBLE_PLATE, GENERATE_DENSE, GENERATE_ROTOR, GENERATE_ROD, GENERATE_FRAME, GENERATE_GEAR, GENERATE_SMALL_GEAR)
+                .blast(builder -> builder
+                        .temp(6900, BlastProperty.GasTier.HIGHER)
+                        .blastStats(VA[UEV], 60 * 20))
+                .build();
     }
 }

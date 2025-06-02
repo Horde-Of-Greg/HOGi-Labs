@@ -5,6 +5,9 @@ hogilabs.machine.cat_generator.name=Industrial Combustion Engine
 # First degree materials
 hogilabs.material.tungsten_25_rhenium=W-25Re
 hogilabs.material.molybdenum_disulfide=Molybdenum Disulfide
+hogilabs.material.light_naquadah=Light Naquadah
+hogilabs.material.heavy_naquadah=Heavy Naquadah
+hogilabs.material.superheavy_naquadah=Superheavy Naquadah
 
 # Second degree materials
 hogilabs.material.lumium_palladium=Lumium-Palladium Dust
