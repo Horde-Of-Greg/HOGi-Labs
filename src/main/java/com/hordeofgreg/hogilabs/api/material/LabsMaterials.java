@@ -8,6 +8,9 @@ public class LabsMaterials {
     public static Material Tungsten25Rhenium;
     public static Material MolybdenumDisulfide;
     public static Material RecrystallizedRhodiumSulfate;
+    public static Material NaquadahLight;
+    public static Material NaquadahHeavy;
+    public static Material NaquadahSuperheavy;
 
     // Second degree materials 10000-10999
     public static Material LumiumPalladium;
