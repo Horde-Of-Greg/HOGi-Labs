@@ -47,5 +47,30 @@ public class LabsSecondDegreeMaterials {
                 .components(MolybdenumDisulfide, 2, Lubricant, 1)
                 .flags(DISABLE_DECOMPOSITION)
                 .build();
+
+        NaquadahSolutionHeavy = new Material.Builder(10003, labsId("heavy_naquadah_solution"))
+                .fluid()
+                .color(0x62bd3e).iconSet(MaterialIconSet.FLUID)
+                .build();
+
+        NaquadahSolutionSuperheavy = new Material.Builder(10004, labsId("superheavy_naquadah_solution"))
+                .fluid()
+                .color(0x59ab39).iconSet(MaterialIconSet.FLUID)
+                .build();
+
+        NaquadahSolution = new Material.Builder(10005, labsId("naquadah_solution"))
+                .fluid()
+                .color(0x69db3d).iconSet(MaterialIconSet.FLUID)
+                .build();
+
+        NaquadahSolutionLight = new Material.Builder(10006, labsId("light_naquadah_solution"))
+                .fluid()
+                .color(0x8bff5e).iconSet(MaterialIconSet.FLUID)
+                .build();
+
+        HydrogenFluoride = new Material.Builder(10007, labsId("hydrogen_fluoride"))
+                .fluid()
+                .color(0xbec5c5).iconSet(MaterialIconSet.FLUID)
+                .build();
     }
 }
