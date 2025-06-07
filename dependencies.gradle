@@ -40,6 +40,7 @@
 dependencies {
     api("gregtech:gregtech:2.8.10-beta")
     api("gregicality:GregicalityMultiblocks:1.2.11")
+    api(rfg.deobf("curse.maven:zbgt-1101263:6399818"))
 
     implementation(rfg.deobf("curse.maven:nomi-labs-932060:5677263"))
 
