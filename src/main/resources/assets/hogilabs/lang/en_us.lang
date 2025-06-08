@@ -2,6 +2,7 @@
 hogilabs.machine.microverse_assembler_t1.name=Microverse Assembler T1
 hogilabs.machine.cat_generator.name=Industrial Combustion Engine
 hogilabs.machine.steel_blast_furnace.name=Steel Blast Furnace
+hogilabs.machine.bootstrapped_mixer.name=Bootstrap Large Mixing Vessel
 
 # First degree materials
 hogilabs.material.tungsten_25_rhenium=W-25Re
@@ -17,7 +18,10 @@ hogilabs.material.industrial_lubricant=Industrial Lubricant
 
 # Multiblock Casings
 tile.large_multiblock_casing.caterpillar_casing.name=Industrial Engine Casing
+tile.large_multiblock_casing.crude_stainless_steel_casing.name=Crude Stainless Steel Casing
+
 tile.large_active_multiblock_casing.caterpillar_engine_intake.name=Industrial Engine Intake Casing
+
 tile.large_multiblock_casing.caterpillar_pipe_casing.name=Industrial Engine Pipe
 
 # Hatches and Buses

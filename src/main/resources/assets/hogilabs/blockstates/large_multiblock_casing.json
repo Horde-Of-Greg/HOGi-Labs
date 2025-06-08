@@ -14,6 +14,12 @@
           "all": "gregtech:blocks/casings/large_multiblock_casing/solid/caterpillar_casing"
         }
       },
+      "crude_stainless_steel_casing": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/casings/large_multiblock_casing/solid/crude_stainless_steel_casing"
+        }
+      },
       "caterpillar_pipe_casing": {
         "model": "minecraft:cube_all",
         "textures": {
