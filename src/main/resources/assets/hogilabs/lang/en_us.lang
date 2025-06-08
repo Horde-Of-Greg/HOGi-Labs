@@ -5,14 +5,20 @@ hogilabs.machine.cat_generator.name=Industrial Combustion Engine
 # First degree materials
 hogilabs.material.tungsten_25_rhenium=W-25Re
 hogilabs.material.molybdenum_disulfide=Molybdenum Disulfide
-hogilabs.material.light_naquadah=Light Naquadah
-hogilabs.material.heavy_naquadah=Heavy Naquadah
-hogilabs.material.superheavy_naquadah=Superheavy Naquadah
+hogilabs.material.naquadah_raw=Raw Naquadah
+hogilabs.material.naquadah_light=Light Naquadah
+hogilabs.material.naquadah_heavy=Heavy Naquadah
+hogilabs.material.naquadah_superheavy=Superheavy Naquadah
 
 # Second degree materials
 hogilabs.material.lumium_palladium=Lumium-Palladium Dust
 hogilabs.material.recrystallized_rhodium_sulfate=Recrystallized Rhodium Sulfate
 hogilabs.material.high_efficiency_lubricant=High Efficiency Lubricant
+hogilabs.material.heavy_naquadah_solution=Heavy Naquadah Solution
+hogilabs.material.superheavy_naquadah_solution=Superheavy Naquadah Solution
+hogilabs.material.naquadah_solution=Naquadah Solution
+hogilabs.material.light_naquadah_solution=Light Naquadah Solution
+hogilabs.material.hydrogen_fluoride=Hydrogen Fluoride
 
 # Third degree materials
 hogilabs.material.industrial_lubricant=Industrial Lubricant
