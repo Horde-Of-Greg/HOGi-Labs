@@ -19,7 +19,7 @@ public class RecipeMapsMixin {
                          target = "Lgregtech/api/recipes/machines/RecipeMapCokeOven;<init>(Ljava/lang/String;IZIZIZIZLgregtech/api/recipes/RecipeBuilder;Z)V"))
     private static void hog$allowCokeOvenFluidInputs(Args args) {
         if (LabsConfig.advanced.activateVerboseLogging) {
-            LOGGER.info("Changing Recipe map args through mixins");
+            LOGGER.info("Changing recipe map args through mixins");
         }
 
         // indices: 0 name,1 iIn,2 modIIn,3 iOut,4 modIOut,5 fIn,6 modFIn,7 fOut,8 modFOut,9 builder,10 hidden

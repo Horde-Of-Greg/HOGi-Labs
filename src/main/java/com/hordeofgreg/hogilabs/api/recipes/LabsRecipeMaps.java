@@ -4,6 +4,8 @@ import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.builders.PrimitiveRecipeBuilder;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
 
+import static gregtech.api.recipes.RecipeMaps.*;
+
 public class LabsRecipeMaps {
 
     public static final RecipeMap<SimpleRecipeBuilder> MICRO_ASSEMBLER_T1_RECIPES = new RecipeMap<>(
@@ -12,5 +14,7 @@ public class LabsRecipeMaps {
     public static final RecipeMap<PrimitiveRecipeBuilder> STEEL_BLAST_FURNACE_RECIPES = new RecipeMap<>(
             "steel_blast_furnace", 9, 1, 1, 0, new PrimitiveRecipeBuilder(), false);
 
-    public static void modifyMaps() {}
+    public static void modifyMaps() {
+        COKE_OVEN_RECIPES.setMaxFluidInputs(1);
+    }
 }
