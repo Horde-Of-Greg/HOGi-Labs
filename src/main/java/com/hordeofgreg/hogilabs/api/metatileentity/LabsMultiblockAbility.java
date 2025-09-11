@@ -5,7 +5,7 @@ import net.minecraftforge.fluids.IFluidTank;
 import gregtech.api.metatileentity.multiblock.MultiblockAbility;
 
 @SuppressWarnings("InstantiationOfUtilityClass")
-public class LabsMultiblockAbilities {
+public class LabsMultiblockAbility {
 
     public static final MultiblockAbility<IFluidTank> LIQUID_BLAST_HATCH = new MultiblockAbility<>(
             "liquid_blast_hatch");

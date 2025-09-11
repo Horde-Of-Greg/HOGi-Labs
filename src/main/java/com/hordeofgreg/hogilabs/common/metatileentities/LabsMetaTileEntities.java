@@ -3,7 +3,7 @@ package com.hordeofgreg.hogilabs.common.metatileentities;
 import static com.hordeofgreg.hogilabs.api.utils.LabsUtil.labsId;
 import static gregtech.common.metatileentities.MetaTileEntities.registerMetaTileEntity;
 
-import com.hordeofgreg.hogilabs.api.metatileentity.LabsMultiblockAbilities;
+import com.hordeofgreg.hogilabs.api.metatileentity.LabsMultiblockAbility;
 import com.hordeofgreg.hogilabs.common.metatileentities.multi.boostrap.MTEBootstrappedMixer;
 import com.hordeofgreg.hogilabs.common.metatileentities.multi.generator.fuel.MTECatGenerator;
 import com.hordeofgreg.hogilabs.common.metatileentities.multi.standard.electric.MTEMicroverseAssemblerT1;
@@ -36,7 +36,7 @@ public class LabsMetaTileEntities {
 
         LIQUID_FUEL_BLAST_HATCH = registerMetaTileEntity(3201,
                 new MTEFilteredHatch(labsId("liquid_blast_hatch"), GTValues.ULV,
-                        LabsMultiblockAbilities.LIQUID_BLAST_HATCH, () -> Materials.Lava.getFluid(1), 4_000));
+                        LabsMultiblockAbility.LIQUID_BLAST_HATCH, () -> Materials.Lava.getFluid(1), 4_000));
 
         if (LabsConfig.advanced.activateVerboseLogging) {
             System.out.println("HOGiLabs MetaTileEntities initialized.");

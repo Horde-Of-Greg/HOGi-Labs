@@ -15,6 +15,12 @@ public final class LabsTextures {
     public static SimpleOverlayRenderer CATERPILLAR_PIPE_CASING;
     public static SimpleOverlayRenderer CRUDE_STAINLESS_STEEL_CASING;
 
+    // Multiblock Controller Overlays
+
+    // Generic Overlays
+
+    // Solid Coils
+
     private LabsTextures() {}
 
     public static void preInit() {
@@ -24,5 +30,7 @@ public final class LabsTextures {
                 "casings/large_multiblock_casing/pipe/caterpillar_pipe_casing");
         CRUDE_STAINLESS_STEEL_CASING = new SimpleOverlayRenderer(
                 "casings/large_multiblock_casing/solid/crude_stainless_steel_casing");
+
+        // Multiblock Controller Overlays
     }
 }

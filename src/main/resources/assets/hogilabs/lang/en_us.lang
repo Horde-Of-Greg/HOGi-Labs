@@ -28,6 +28,8 @@ hogilabs.material.industrial_lubricant=Industrial Lubricant
 # Multiblock Casings
 tile.large_multiblock_casing.caterpillar_casing.name=Industrial Engine Casing
 tile.large_multiblock_casing.crude_stainless_steel_casing.name=Crude Stainless Steel Casing
+tile.large_multiblock_casing.crude_steel_casing.name=Crude Steel Casing
+
 
 tile.large_active_multiblock_casing.caterpillar_engine_intake.name=Industrial Engine Intake Casing
 

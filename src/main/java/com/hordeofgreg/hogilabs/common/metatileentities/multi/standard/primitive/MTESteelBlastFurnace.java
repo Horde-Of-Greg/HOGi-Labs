@@ -8,7 +8,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 import org.jetbrains.annotations.NotNull;
 
-import com.hordeofgreg.hogilabs.api.metatileentity.LabsMultiblockAbilities;
+import com.hordeofgreg.hogilabs.api.metatileentity.LabsMultiblockAbility;
 import com.hordeofgreg.hogilabs.api.recipes.LabsRecipeMaps;
 
 import codechicken.lib.render.CCRenderState;
@@ -81,7 +81,7 @@ public class MTESteelBlastFurnace extends RecipeMapPrimitiveMultiblockController
 
         initializeAbilities();
 
-        fuelTank = getAbilities(LabsMultiblockAbilities.LIQUID_BLAST_HATCH).get(0);
+        fuelTank = getAbilities(LabsMultiblockAbility.LIQUID_BLAST_HATCH).get(0);
     }
 
     @Override
@@ -100,7 +100,7 @@ public class MTESteelBlastFurnace extends RecipeMapPrimitiveMultiblockController
                 .where('G', states(getGlassCasingState(), getCasingState()))
                 .where('O', abilities(MultiblockAbility.EXPORT_ITEMS))
                 .where('M', abilities(MultiblockAbility.MUFFLER_HATCH))
-                .where('E', abilities(LabsMultiblockAbilities.LIQUID_BLAST_HATCH))
+                .where('E', abilities(LabsMultiblockAbility.LIQUID_BLAST_HATCH))
                 .where('#', air())
                 .build();
     }

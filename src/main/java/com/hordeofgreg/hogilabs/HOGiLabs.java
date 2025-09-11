@@ -46,7 +46,7 @@ public class HOGiLabs {
     public void preInit(FMLPreInitializationEvent event) {
         MinecraftForge.EVENT_BUS.register(this);
         if (LabsConfig.advanced.activateVerboseLogging) {
-            LOGGER.info("I am " + Tags.MODNAME + " + at version " + Tags.VERSION);
+            LOGGER.info("I am " + Tags.MODNAME + " at version " + Tags.VERSION);
         }
         LabsMetaBlocks.init();
         LabsMetaTileEntities.init();

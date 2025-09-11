@@ -11,4 +11,6 @@ public class LabsRecipeMaps {
 
     public static final RecipeMap<PrimitiveRecipeBuilder> STEEL_BLAST_FURNACE_RECIPES = new RecipeMap<>(
             "steel_blast_furnace", 9, 1, 1, 0, new PrimitiveRecipeBuilder(), false);
+
+    public static void modifyMaps() {}
 }

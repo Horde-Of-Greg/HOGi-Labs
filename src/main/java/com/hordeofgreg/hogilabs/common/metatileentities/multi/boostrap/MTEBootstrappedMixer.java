@@ -21,10 +21,7 @@ import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
-import gregtech.common.blocks.BlockGlassCasing;
-import gregtech.common.blocks.BlockMetalCasing;
-import gregtech.common.blocks.BlockTurbineCasing;
-import gregtech.common.blocks.MetaBlocks;
+import gregtech.common.blocks.*;
 
 public class MTEBootstrappedMixer extends RecipeMapSteamMultiblockController {
 
@@ -44,16 +41,17 @@ public class MTEBootstrappedMixer extends RecipeMapSteamMultiblockController {
     @Override
     protected @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
+                // spotless:off
                 .aisle("#######", "#XXXXX#", "#XCMCX#", "#XCMCX#", "#XCMCX#", "#XCMCX#", "#XCMCX#", "#XXXXX#",
                         "#######")
                 .aisle("#XXXXX#", "XAAAAAX", "XAAAAAX", "XAAAAAX", "XAAAAAX", "XAAAAAX", "XAAAAAX", "XAAAAAX",
                         "#XXXXX#")
                 .aisle("#XCCCX#", "XAAAAAX", "GABAAAG", "GAAAAAG", "GAABBAG", "GAAAAAG", "GABAAAG", "XAAAAAX",
-                        "#XCCCX#")
+                        "#XPPPX#")
                 .aisle("#XCCCX#", "XAARAAX", "GABRBAG", "GAARAAG", "GAARAAG", "GAARAAG", "GABRBAG", "XAARAAX",
-                        "#XCRCX#")
+                        "#XPRPX#")
                 .aisle("#XCCCX#", "XAAAAAX", "GAAABAG", "GAAAAAG", "GABBAAG", "GAAAAAG", "GAAABAG", "XAAAAAX",
-                        "#XCCCX#")
+                        "#XPPPX#")
                 .aisle("#XXXXX#", "XAAAAAX", "XAAAAAX", "XAAAAAX", "XAAAAAX", "XAAAAAX", "XAAAAAX", "XAAAAAX",
                         "#XXXXX#")
                 .aisle("#######", "#XXXXX#", "#XCSCX#", "#XCCCX#", "#XCCCX#", "#XCCCX#", "#XCCCX#", "#XXXXX#",
@@ -62,9 +60,10 @@ public class MTEBootstrappedMixer extends RecipeMapSteamMultiblockController {
                 .where('X',
                         states(getCasingState()).setMinGlobalLimited(105)
                                 .or(autoAbilities(true, true, true, true, false)))
-                .where('C', states(getStainlessCasingState()).setMinGlobalLimited(35))
+                .where('C', states(getStainlessCasingState()))
                 .where('G', states(getGlassCasingState(), getStainlessCasingState()))
                 .where('R', states(getRotationCasingState()))
+                .where('P', states(getPipeCasingState()))
                 .where('M', abilities(MultiblockAbility.MUFFLER_HATCH))
                 .where('B', states(getCasingState()))
                 .where('A', air())
@@ -90,6 +89,11 @@ public class MTEBootstrappedMixer extends RecipeMapSteamMultiblockController {
     public IBlockState getRotationCasingState() {
         return MetaBlocks.TURBINE_CASING.getState(
                 BlockTurbineCasing.TurbineCasingType.STEEL_GEARBOX);
+    }
+
+    public IBlockState getPipeCasingState() {
+        return MetaBlocks.BOILER_CASING.getState(
+                BlockBoilerCasing.BoilerCasingType.STEEL_PIPE);
     }
 
     @Override
