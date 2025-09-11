@@ -1,14 +1,14 @@
 package com.hordeofgreg.hogilabs.core;
 
-import com.google.common.collect.ImmutableList;
-import com.hordeofgreg.hogilabs.Tags;
-import net.minecraftforge.common.ForgeVersion;
-import net.minecraftforge.fml.common.Optional;
-import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
-import zone.rong.mixinbooter.IEarlyMixinLoader;
-
 import java.util.List;
 import java.util.Map;
+
+import net.minecraftforge.fml.relauncher.IFMLLoadingPlugin;
+
+import com.google.common.collect.ImmutableList;
+import com.hordeofgreg.hogilabs.Tags;
+
+import zone.rong.mixinbooter.IEarlyMixinLoader;
 
 @IFMLLoadingPlugin.Name("HogilabsCore")
 @IFMLLoadingPlugin.MCVersion("1.12.2")

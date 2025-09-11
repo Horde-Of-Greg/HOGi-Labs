@@ -1,10 +1,10 @@
 package com.hordeofgreg.hogilabs.api.recipes;
 
+import static gregtech.api.recipes.RecipeMaps.*;
+
 import gregtech.api.recipes.RecipeMap;
 import gregtech.api.recipes.builders.PrimitiveRecipeBuilder;
 import gregtech.api.recipes.builders.SimpleRecipeBuilder;
-
-import static gregtech.api.recipes.RecipeMaps.*;
 
 public class LabsRecipeMaps {
 
