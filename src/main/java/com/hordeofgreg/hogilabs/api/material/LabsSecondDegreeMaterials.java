@@ -72,5 +72,11 @@ public class LabsSecondDegreeMaterials {
                 .fluid()
                 .color(0xbec5c5).iconSet(MaterialIconSet.FLUID)
                 .build();
+
+        ChromicAcid = new Material.Builder(10008, labsId("chromic_acid"))
+                .fluid()
+                .color(0x998595).iconSet(MaterialIconSet.FLUID)
+                .components(Hydrogen, 2, Chrome, 1, Oxygen, 4)
+                .build();
     }
 }

@@ -12,8 +12,8 @@ import com.hordeofgreg.hogilabs.common.blocks.LabsMetaBlocks;
 public class ClientProxy extends CommonProxy {
 
     @Override
-    public void preLoad() {
-        super.preLoad();
+    public void preInit() {
+        super.preInit();
         LabsTextures.preInit();
     }
 

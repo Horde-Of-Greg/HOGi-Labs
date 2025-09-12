@@ -2,7 +2,12 @@
 hogilabs.machine.microverse_assembler_t1.name=Microverse Assembler T1
 hogilabs.machine.cat_generator.name=Industrial Combustion Engine
 hogilabs.machine.steel_blast_furnace.name=Steel Blast Furnace
+hogilabs.machine.panner.name=Panner
 hogilabs.machine.bootstrapped_mixer.name=Bootstrap Large Mixing Vessel
+
+# Steam Machines
+hogilabs.machine.steam_mixer_bronze.name=Steam Mixer
+hogilabs.machine.steam_mixer_steel.name=High Pressure Steam Mixer
 
 # First degree materials
 hogilabs.material.tungsten_25_rhenium=W-25Re
@@ -11,9 +16,10 @@ hogilabs.material.naquadah_raw=Raw Naquadah
 hogilabs.material.naquadah_light=Light Naquadah
 hogilabs.material.naquadah_heavy=Heavy Naquadah
 hogilabs.material.naquadah_superheavy=Superheavy Naquadah
+hogilabs.material.crocoite=Crocoite
 
 # Second degree materials
-hogilabs.material.lumium_palladium=Lumium-Palladium Dust
+hogilabs.material.lumium_palladium=Lumium-Palladium
 hogilabs.material.recrystallized_rhodium_sulfate=Recrystallized Rhodium Sulfate
 hogilabs.material.high_efficiency_lubricant=High Efficiency Lubricant
 hogilabs.material.heavy_naquadah_solution=Heavy Naquadah Solution
@@ -21,17 +27,21 @@ hogilabs.material.superheavy_naquadah_solution=Superheavy Naquadah Solution
 hogilabs.material.naquadah_solution=Naquadah Solution
 hogilabs.material.light_naquadah_solution=Light Naquadah Solution
 hogilabs.material.hydrogen_fluoride=Hydrogen Fluoride
+hogilabs.material.crocoite_solution=Crocoite Solution
 
 # Third degree materials
 hogilabs.material.industrial_lubricant=Industrial Lubricant
+hogilabs.material.chromic_acid=Chromic Acid
 
 # Multiblock Casings
 tile.large_multiblock_casing.caterpillar_casing.name=Industrial Engine Casing
 tile.large_multiblock_casing.crude_stainless_steel_casing.name=Crude Stainless Steel Casing
 tile.large_multiblock_casing.crude_steel_casing.name=Crude Steel Casing
+tile.large_multiblock_casing.bronze_grate_casing.name=Bronze Grate
 
 
 tile.large_active_multiblock_casing.caterpillar_engine_intake.name=Industrial Engine Intake Casing
+tile.large_active_multiblock_casing.bronze_air_intake.name=Bronze Air Intake Casing
 
 tile.large_multiblock_casing.caterpillar_pipe_casing.name=Industrial Engine Pipe
 
@@ -43,3 +53,4 @@ tile.wire_coil.tungsten_rhenium.name=W-25Re Coil
 
 # Recipe Maps
 recipemap.steel_blast_furnace.name=Steel Blast Furnace
+recipemap.panner.name=Panner

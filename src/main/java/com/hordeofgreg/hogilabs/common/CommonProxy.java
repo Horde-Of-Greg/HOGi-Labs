@@ -1,5 +1,6 @@
 package com.hordeofgreg.hogilabs.common;
 
+import java.io.IOException;
 import java.util.Objects;
 import java.util.function.Function;
 
@@ -17,6 +18,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.hordeofgreg.hogilabs.Tags;
 import com.hordeofgreg.hogilabs.api.recipes.LabsRecipeMaps;
+import com.hordeofgreg.hogilabs.api.worldgen.CustomOreVeins;
 import com.hordeofgreg.hogilabs.common.blocks.LabsMetaBlocks;
 import com.hordeofgreg.hogilabs.config.LabsConfig;
 
@@ -27,7 +29,13 @@ public class CommonProxy {
 
     public static final Logger LOGGER = LogManager.getLogger(Tags.MODID);
 
-    public void preLoad() {}
+    public void preInit() {}
+
+    public void init() {}
+
+    public void postInit() throws IOException {
+        CustomOreVeins.init();
+    }
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {

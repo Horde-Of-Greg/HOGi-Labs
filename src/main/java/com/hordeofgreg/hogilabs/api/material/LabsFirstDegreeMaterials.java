@@ -63,5 +63,12 @@ public class LabsFirstDegreeMaterials {
                         .temp(6900, BlastProperty.GasTier.HIGHER)
                         .blastStats(VA[UEV], 60 * 20))
                 .build();
+
+        Crocoite = new Material.Builder(9006, labsId("crocoite"))
+                .dust().ore().gem()
+                .color(0xD7361D).iconSet(MaterialIconSet.ROUGH)
+                .addOreByproducts(Phosphate, Molybdenum)
+                .components(Lead, 1, Chrome, 1, Oxygen, 4)
+                .build();
     }
 }

@@ -25,6 +25,12 @@
         "textures": {
           "all": "gregtech:blocks/casings/large_multiblock_casing/pipe/caterpillar_pipe_casing"
         }
+      },
+      "bronze_grate_casing": {
+        "model": "minecraft:cube_all",
+        "textures": {
+          "all": "gregtech:blocks/casings/large_multiblock_casing/pipe/machine_casing_bronze_grate"
+        }
       }
     }
   }

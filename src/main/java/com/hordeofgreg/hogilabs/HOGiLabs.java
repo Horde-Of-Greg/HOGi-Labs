@@ -3,6 +3,8 @@ package com.hordeofgreg.hogilabs;
 import static com.hordeofgreg.hogilabs.common.blocks.LabsMetaBlocks.WIRE_COIL;
 import static gregtech.api.GregTechAPI.HEATING_COILS;
 
+import java.io.IOException;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.crafting.IRecipe;
@@ -55,7 +57,7 @@ public class HOGiLabs {
             HEATING_COILS.put(WIRE_COIL.getState(type), type);
         }
 
-        proxy.preLoad();
+        proxy.preInit();
     }
 
     @SubscribeEvent
@@ -76,7 +78,9 @@ public class HOGiLabs {
 
     @EventHandler
     // postInit "Handle interaction with other mods, complete your setup based on this." (Remove if not needed)
-    public void postInit(FMLPostInitializationEvent event) {}
+    public void postInit(FMLPostInitializationEvent event) throws IOException {
+        proxy.postInit();
+    }
 
     @EventHandler
     // register server commands in this event handler (Remove if not needed)
