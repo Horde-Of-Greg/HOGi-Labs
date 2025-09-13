@@ -5,6 +5,9 @@ hogilabs.machine.steel_blast_furnace.name=Steel Blast Furnace
 hogilabs.machine.panner.name=Panner
 hogilabs.machine.bootstrapped_mixer.name=Bootstrap Large Mixing Vessel
 
+# Multiblock Text
+hogilabs.multiblock.steel_blast_furnace.parallel_disclaimer=UNLIMITED Parallel
+
 # Steam Machines
 hogilabs.machine.steam_mixer_bronze.name=Steam Mixer
 hogilabs.machine.steam_mixer_steel.name=High Pressure Steam Mixer

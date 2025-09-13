@@ -5,6 +5,7 @@ import java.util.List;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.TextFormatting;
 import net.minecraftforge.fluids.IFluidTank;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -29,6 +30,7 @@ import gregtech.api.metatileentity.multiblock.RecipeMapPrimitiveMultiblockContro
 import gregtech.api.pattern.BlockPattern;
 import gregtech.api.pattern.FactoryBlockPattern;
 import gregtech.api.pattern.PatternMatchContext;
+import gregtech.api.util.TextComponentUtil;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.BlockFireboxCasing;
@@ -38,7 +40,7 @@ import gregtech.common.blocks.MetaBlocks;
 
 public class MTESteelBlastFurnace extends RecipeMapPrimitiveMultiblockController {
 
-    private static final int PARALLEL_LIMIT = 1024;
+    private static final int PARALLEL_LIMIT = Integer.MAX_VALUE;
 
     private static final int LAVA_DRAIN_AMOUNT = 50;
 
@@ -97,7 +99,8 @@ public class MTESteelBlastFurnace extends RecipeMapPrimitiveMultiblockController
     protected void addDisplayText(List<ITextComponent> textList) {
         MultiblockDisplayText.builder(textList, isStructureFormed())
                 .setWorkingStatus(recipeMapWorkable.isWorkingEnabled(), recipeMapWorkable.isActive())
-                .addParallelsLine(recipeMapWorkable.getParallelLimit())
+                .addCustom(tl -> tl.add(TextComponentUtil.translationWithColor(TextFormatting.LIGHT_PURPLE,
+                        "hogilabs.multiblock.steel_blast_furnace.parallel_disclaimer")))
                 .addWorkingStatusLine()
                 .addProgressLine(recipeMapWorkable.getProgressPercent());
     }
