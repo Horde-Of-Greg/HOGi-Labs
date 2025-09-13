@@ -1,9 +1,15 @@
 package com.hordeofgreg.hogilabs.common.metatileentities.multi.boostrap;
 
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.util.ResourceLocation;
+
+import org.jetbrains.annotations.NotNull;
+
 import com.hordeofgreg.hogilabs.api.capability.impl.BootstrapMultiWorkable;
 import com.hordeofgreg.hogilabs.api.render.LabsTextures;
 import com.hordeofgreg.hogilabs.common.blocks.LabsMetaBlocks;
 import com.hordeofgreg.hogilabs.common.blocks.block.BlockLargeMultiblockCasing;
+
 import gregtech.api.capability.IMufflerHatch;
 import gregtech.api.metatileentity.MetaTileEntity;
 import gregtech.api.metatileentity.interfaces.IGregTechTileEntity;
@@ -16,9 +22,6 @@ import gregtech.api.recipes.RecipeMaps;
 import gregtech.client.renderer.ICubeRenderer;
 import gregtech.client.renderer.texture.Textures;
 import gregtech.common.blocks.*;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.util.ResourceLocation;
-import org.jetbrains.annotations.NotNull;
 
 public class MTEBootstrappedMixer extends RecipeMapSteamMultiblockController {
 
