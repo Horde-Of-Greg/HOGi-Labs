@@ -6,15 +6,15 @@ on:
         description: Tag to Checkout and Release.
         required: true
         type: string
-      publish-to-gh:
+      publish_to_gh:
         description: Whether to publish to GitHub Releases
         type: boolean
         required: true
-      publish-to-cf:
+      publish_to_cf:
         description: Whether to publish to CurseForge
         type: boolean
         required: true
-      publish-to-mr:
+      publish_to_mr:
         description: Whether to publish to Modrinth
         type: boolean
         required: true
