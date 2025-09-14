@@ -16,12 +16,19 @@ jobs:
     permissions:
       contents: write
     steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Build
+        uses: ./.github/actions/build_setup
+
+      - name: Grant Permissions to Gradle Wrapper
+        run: chmod +x ./gradlew
+
       - uses: actions/download-artifact@v4
         with:
           path: build/libs
           merge-multiple: true
-
-      - run: echo "tag=${{ inputs.release_tag }}"
 
       - name: Publish to Curseforge
         env:
