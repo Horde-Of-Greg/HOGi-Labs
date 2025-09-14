@@ -1,0 +1,14 @@
+name: Publish Project
+on:
+  workflow_call:
+    inputs:
+      release_tag:
+        type: string
+        required: true
+
+jobs:
+  github:
+    uses: ./.github/workflows/publish-to-github.yml
+    with:
+      release_tag:  ${{ inputs.release_tag }}
+    secrets: inherit

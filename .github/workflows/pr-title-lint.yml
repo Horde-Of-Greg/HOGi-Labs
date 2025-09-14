@@ -1,0 +1,21 @@
+name: PR Title Regex Linting
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v8
+        with:
+          script: |
+            const title = context.payload.pull_request.title;
+            const regex = /^\[(MAJOR|MINOR|PATCH)\] .+/;
+            if (!regex.test(title)) {
+              core.setFailed(
+                `PR title must match: "[<MAJOR|MINOR|PATCH>] <description>". Got: "${title}"`
+              );
+            }
+# TODO: Enforce Capitalization and other
