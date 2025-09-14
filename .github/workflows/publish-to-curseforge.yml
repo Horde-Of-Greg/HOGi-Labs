@@ -1,0 +1,32 @@
+name: Publish to Curseforge
+on:
+  workflow_call:
+    inputs:
+      release_tag:
+        type: string
+        required: true
+
+  env:
+    CHANGELOG_LOCATION: "Changelog is available [here](https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }})"
+    RELEASE_TYPE: 'beta'
+
+jobs:
+  gh-release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: build/libs
+          merge-multiple: true
+
+      - run: echo "tag=${{ inputs.release_tag }}"
+
+      - name: Publish to Curseforge
+        env:
+          CURSEFORGE_API_KEY: "${{ secrets.CURSEFORGE_API_TOKEN }}"
+          CURSEFORGE_PROJECT_ID: "${{ secrets.CURSEFORGE_PROJECT_ID }}"
+          CHANGELOG_LOCATION: "${{ env.CHANGELOG_LOCATION }}"
+          RELEASE_TYPE: "${{ env.RELEASE_TYPE }}"
+        run: ./gradlew curseforge --warning-mode all --build-cache

@@ -36,4 +36,7 @@ jobs:
     uses: ./.github/workflows/publish.yml
     with:
       release_tag: ${{ needs.bump.outputs.release_tag }}
+      publish-to-gh: true
+      publish-to-cf: true
+      publish-to-mr: true
     secrets: inherit
