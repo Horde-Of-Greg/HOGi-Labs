@@ -1,4 +1,5 @@
 name: Publish Project Manually
+
 on:
   workflow_dispatch:
     inputs:
@@ -29,6 +30,7 @@ jobs:
 
   github:
     if: ${{ inputs.publish_to_gh }}
+    needs: build
     uses: ./.github/workflows/publish-to-github.yml
     with:
       release_tag:  ${{ inputs.release_tag }}

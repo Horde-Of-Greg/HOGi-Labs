@@ -1,4 +1,5 @@
 name: Publish to Curseforge
+
 on:
   workflow_call:
     inputs:
@@ -11,7 +12,8 @@ env:
   RELEASE_TYPE: 'beta'
 
 jobs:
-  gh-release:
+  cf-release:
+    name: Release to CurseForge
     runs-on: ubuntu-latest
     permissions:
       contents: write

@@ -1,4 +1,5 @@
 name: Bump Version Based on Commit Name
+
 on:
   workflow_call:
     outputs:
@@ -9,6 +10,7 @@ on:
 
 jobs:
   bump:
+    name: Bump Version
     runs-on: ubuntu-latest
     permissions:
       contents: write

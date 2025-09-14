@@ -1,9 +1,11 @@
 name: Build the Mod
+
 on:
   workflow_call:
 
 jobs:
   build:
+    name: Build Mod
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository

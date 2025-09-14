@@ -1,4 +1,5 @@
 name: Publish To Github
+
 on:
   workflow_call:
     inputs:
@@ -8,6 +9,7 @@ on:
 
 jobs:
   gh-release:
+    name: Release to GitHub
     runs-on: ubuntu-latest
     permissions:
       contents: write

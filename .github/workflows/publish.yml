@@ -1,4 +1,5 @@
 name: Publish Project
+
 on:
   workflow_call:
     inputs:
@@ -21,6 +22,7 @@ on:
 
 jobs:
   github:
+    name: Dispatch Publish to GitHub
     if: ${{ inputs.publish_to_gh }}
     uses: ./.github/workflows/publish-to-github.yml
     with:
@@ -28,6 +30,7 @@ jobs:
     secrets: inherit
 
   curseforge:
+    name: Dispatch Publish to CurseForge
     if: ${{ inputs.publish_to_cf }}
     uses: ./.github/workflows/publish-to-curseforge.yml
     with:
@@ -35,6 +38,7 @@ jobs:
     secrets: inherit
 
   modrinth:
+    name: Dispatch Publish to Modrinth
     if: ${{ inputs.publish_to_mr }}
     uses: ./.github/workflows/publish-to-modrinth.yml
     with:
