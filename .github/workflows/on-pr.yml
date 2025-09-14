@@ -1,4 +1,5 @@
 name: Build on Pull Request
+
 on:
   pull_request:
 
@@ -8,7 +9,7 @@ concurrency:
 
 jobs:
   build:
-    name: Build HOGi-Labs
+    name: Build Mod
     runs-on: ubuntu-latest
     env:
       VERSION_SUFFIX: "PR-${{ github.event.number }}"

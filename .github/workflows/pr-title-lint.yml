@@ -6,6 +6,7 @@ on:
 
 jobs:
   check:
+    name: Lint and Check PR Title
     runs-on: ubuntu-latest
     steps:
       - uses: actions/github-script@v8

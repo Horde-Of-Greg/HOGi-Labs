@@ -1,4 +1,5 @@
 name: Publish to Modrinth
+
 on:
   workflow_call:
     inputs:
@@ -11,7 +12,8 @@ env:
   RELEASE_TYPE: 'beta'
 
 jobs:
-  gh-release:
+  mr-release:
+    name: Release to Modrinth
     runs-on: ubuntu-latest
     permissions:
       contents: write

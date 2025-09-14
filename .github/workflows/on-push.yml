@@ -1,4 +1,5 @@
 name: Bump, Build and Publish on Push to master
+
 on:
   push:
     branches:
@@ -20,17 +21,20 @@ concurrency:
 
 jobs:
   bump:
+    name: Dispatch Bump Version
     if: ${{ github.event.sender.type != 'Bot' && !endsWith(github.actor, '[bot]') && github.actor != 'dependabot[bot]' }}
     uses: ./.github/workflows/bump.yml
     secrets: inherit
 
   build:
+    name: Dispatch Build Mod
     if: ${{ github.event.sender.type != 'Bot' && !endsWith(github.actor, '[bot]') && github.actor != 'dependabot[bot]' }}
     needs: bump
     uses: ./.github/workflows/build.yml
     secrets: inherit
 
   publish:
+    name: Dispatch Publishing
     if: ${{ github.event.sender.type != 'Bot' && !endsWith(github.actor, '[bot]') && github.actor != 'dependabot[bot]' }}
     needs: [build, bump]
     uses: ./.github/workflows/publish.yml
