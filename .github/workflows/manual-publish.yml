@@ -1,0 +1,46 @@
+name: Publish Project Manually
+on:
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: Tag to Checkout and Release.
+        required: true
+        type: string
+      publish_to_gh:
+        description: Whether to publish to GitHub Releases
+        type: boolean
+        required: true
+      publish_to_cf:
+        description: Whether to publish to CurseForge
+        type: boolean
+        required: true
+      publish_to_mr:
+        description: Whether to publish to Modrinth
+        type: boolean
+        required: true
+
+jobs:
+  build:
+    uses: ./.github/workflows/build.yml
+    secrets: inherit
+
+  github:
+    if: ${{ inputs.publish_to_gh }}
+    uses: ./.github/workflows/publish-to-github.yml
+    with:
+      release_tag:  ${{ inputs.release_tag }}
+    secrets: inherit
+
+  curseforge:
+    if: ${{ inputs.publish_to_cf }}
+    uses: ./.github/workflows/publish-to-curseforge.yml
+    with:
+      release_tag: ${{ inputs.release_tag }}
+    secrets: inherit
+
+  modrinth:
+    if: ${{ inputs.publish_to_mr }}
+    uses: ./.github/workflows/publish-to-modrinth.yml
+    with:
+      release_tag: ${{ inputs.release_tag }}
+    secrets: inherit

@@ -1,0 +1,35 @@
+name: PR Title Regex Linting
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v8
+        with:
+          script: |
+            const title = context.payload.pull_request.title;
+            const regex = /^\[(MAJOR|MINOR|PATCH|DEV)\] .+/;
+            if (!regex.test(title)) {
+              core.setFailed(```PR title must match: "[<MAJOR|MINOR|PATCH|DEV>] <description>". Got: "${title}"
+                  -----------
+                  MAJOR: Breaking changes. Anything that would require players to create a new world.
+                  MINOR: A significant addition or change that is backwards-compatible.
+                  PATCH: Small changes or improvements, parts of a larger feature, bug fixes.
+                  -----------
+                  DEV: Adds changes to files pertaining to development only. No version bump. List of such files:
+                  - ".gitignore"
+                  - ".github/**"
+                  - "README.md"
+                  - "LICENSE"
+                  - "CONTRIBUTING.md"
+                  - "CODE_OF_CONDUCT.md"
+                  -----------
+                  Please update the title and try again. If you are not sure which to use, you can wait for a maintainer to change the title.
+                  ```
+              );
+            }
+# TODO: Enforce Capitalization and other

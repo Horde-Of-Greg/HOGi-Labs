@@ -1,0 +1,151 @@
+name: Bump Version Based on Commit Name
+on:
+  workflow_call:
+    outputs:
+      release_version:
+        value: ${{ jobs.bump.outputs.release_version }}
+      release_tag:
+        value: ${{ jobs.bump.outputs.release_tag }}
+
+jobs:
+  bump:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      release_version: ${{ steps.derive.outputs.RELEASE_VERSION }}
+      release_tag: ${{ steps.derive.outputs.RELEASE_TAG }}
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - id: derive
+        name: Derive new version and update gradle.properties
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const fs = require('fs');
+            const { owner, repo } = context.repo;
+            
+            // Read the commit message. Decide upon logic based on that.
+            const { data: commitData } = await github.rest.repos.getCommit({
+                owner,
+                repo,
+                ref: context.sha
+            });
+            const commitMessage = (commitData.commit.message).split('\n')[0];
+            
+            const bumpMatch = commitMessage.match(/^\[(MAJOR|MINOR|PATCH)\]\s+.+/);
+            const botCommitMatch = commitMessage.match(/^\[BOT\]\s+.+/);
+            const devCommitMatch = commitMessage.match(/^\[DEV\]\s+.+/);
+            if (botCommitMatch) {
+                core.info('Skipping version bump for bot commit.');
+                return;
+            }
+            if (devCommitMatch) {
+                core.setFailed(`DEV Commits can only change files relevant purely to the dev env.`);
+                return;
+            }
+            if (!bumpMatch) {
+                core.setFailed(`Commit title must match "[MAJOR|MINOR|PATCH] <description>". Got: "${commitMessage}"`);
+                return;
+            }
+            const bumpLevel = bumpMatch[1];
+            
+            // Read the current version from gradle.properties
+            const propertiesPath = 'gradle.properties';
+            if (!fs.existsSync(propertiesPath)) {
+                core.setFailed('gradle.properties not found at repository root.');
+                return;
+            }
+            const propertiesText = fs.readFileSync(propertiesPath, 'utf8');
+            
+            const versionPropertiesMatch = propertiesText.match(
+                /^\s*modVersion\s*=\s*([0-9]+)\.([0-9]+)\.([0-9]+)\s*$/m
+            );
+            if (!versionPropertiesMatch) {
+                core.setFailed('Could not find a line like "modVersion = X.Y.Z" in gradle.properties.');
+                return;
+            }
+            
+            const currentMajor = parseInt(versionPropertiesMatch[1], 10);
+            const currentMinor = parseInt(versionPropertiesMatch[2], 10);
+            const currentPatch = parseInt(versionPropertiesMatch[3], 10);
+            
+            // Calculate the next version
+            let nextMajor = currentMajor;
+            let nextMinor = currentMinor;
+            let nextPatch = currentPatch;
+            
+            if (bumpLevel === 'MAJOR') {
+                nextMajor += 1; nextMinor = 0; nextPatch = 0;
+            } else if (bumpLevel === 'MINOR') {
+                nextMinor += 1; nextPatch = 0;
+            } else {
+                nextPatch += 1;
+            }
+            
+            const newVersion = `${nextMajor}.${nextMinor}.${nextPatch}`;
+            const newTag = `v${newVersion}`;
+            
+            // Write updated gradle.properties
+            const updatedPropertiesText = propertiesText.replace(
+                /^\s*modVersion\s*=.*$/m,
+                `modVersion = ${newVersion}`
+            );
+            fs.writeFileSync(propertiesPath, updatedPropertiesText, 'utf8');
+            
+            // Export for later steps
+            core.exportVariable('RELEASE_VERSION', newVersion);
+            core.exportVariable('RELEASE_TAG', newTag);
+            
+            core.setOutput('RELEASE_VERSION', newVersion);
+            core.setOutput('RELEASE_TAG', newTag);
+
+      - name: Commit version bump
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "[BOT] Bump Ver ${{ env.RELEASE_TAG }}"
+          file_pattern: gradle.properties
+
+      - name: Create annotated tag on new commit
+        uses: actions/github-script@v8
+        with:
+          script: |
+            const { owner, repo } = context.repo;
+            const tagName = process.env.RELEASE_TAG;
+
+            const refIsBranch = context.ref.startsWith('refs/heads/');
+            const branchName = refIsBranch ? context.ref.slice('refs/heads/'.length) : context.ref;
+
+            const { data: branchData } = await github.rest.repos.getBranch({
+              owner, repo, branch: branchName
+            });
+            const headSha = branchData.commit.sha;
+
+            try {
+              await github.rest.git.getRef({ owner, repo, ref: `tags/${tagName}` });
+              core.info(`Tag ${tagName} already exists. Skipping creation.`);
+            } catch (error) {
+              if (error.status !== 404) throw error;
+
+              const { data: tagObject } = await github.rest.git.createTag({
+                owner,
+                repo,
+                tag: tagName,
+                message: tagName,
+                object: headSha,
+                type: 'commit'
+              });
+
+              await github.rest.git.createRef({
+                owner,
+                repo,
+                ref: `refs/tags/${tagName}`,
+                sha: tagObject.sha
+              });
+
+              core.info(`Created tag ${tagName} at ${headSha}`);
+            }

@@ -1,16 +1,6 @@
-name: Build pack on push to master
+name: Build on Pull Request
 on:
-  push:
-    branches:
-      - master
-    paths-ignore:
-      - ".gitignore"
-      - ".github/**"
-      - "README.md"
-      - "LICENSE"
-      - "CONTRIBUTING.md"
-      - "CODE_OF_CONDUCT.md"
-  workflow_dispatch:
+  pull_request:
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -20,6 +10,8 @@ jobs:
   build:
     name: Build HOGi-Labs
     runs-on: ubuntu-latest
+    env:
+      VERSION_SUFFIX: "PR-${{ github.event.number }}"
 
     steps:
       - name: Checkout Repository
@@ -27,9 +19,6 @@ jobs:
         with:
           ref: ${{ inputs.tag }}
           fetch-depth: 0
-
-      - name: Version Suffix
-        run: echo "VERSION_SUFFIX=NIGHTLY-$(git rev-parse --short HEAD)" >> $GITHUB_ENV
 
       - name: Setup Build
         uses: ./.github/actions/build_setup
