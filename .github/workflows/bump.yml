@@ -39,8 +39,13 @@ jobs:
             
             const bumpMatch = commitMessage.match(/^\[(MAJOR|MINOR|PATCH)\]\s+.+/);
             const botCommitMatch = commitMessage.match(/^\[BOT\]\s+.+/);
+            const devCommitMatch = commitMessage.match(/^\[DEV\]\s+.+/);
             if (botCommitMatch) {
                 core.info('Skipping version bump for bot commit.');
+                return;
+            }
+            if (devCommitMatch) {
+                core.setFailed(`DEV Commits can only change files relevant purely to the dev env.`);
                 return;
             }
             if (!bumpMatch) {
