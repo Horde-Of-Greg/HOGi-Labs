@@ -21,21 +21,21 @@ on:
 
 jobs:
   github:
-    if: publish-to-gh
+    if: ${{ inputs.publish_to_gh }}
     uses: ./.github/workflows/publish-to-github.yml
     with:
       release_tag:  ${{ inputs.release_tag }}
     secrets: inherit
 
   curseforge:
-    if: publish-to-cf
+    if: ${{ inputs.publish_to_cf }}
     uses: ./.github/workflows/publish-to-curseforge.yml
     with:
       release_tag: ${{ inputs.release_tag }}
     secrets: inherit
 
   modrinth:
-    if: publish-to-mr
+    if: ${{ inputs.publish_to_mr }}
     uses: ./.github/workflows/publish-to-modrinth.yml
     with:
       release_tag: ${{ inputs.release_tag }}
