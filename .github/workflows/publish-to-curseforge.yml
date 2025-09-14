@@ -6,9 +6,9 @@ on:
         type: string
         required: true
 
-  env:
-    CHANGELOG_LOCATION: "Changelog is available [here](https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }})"
-    RELEASE_TYPE: 'beta'
+env:
+  CHANGELOG_LOCATION: "Changelog is available [here](https://github.com/${{ github.repository }}/releases/tag/${{ github.ref_name }})"
+  RELEASE_TYPE: 'beta'
 
 jobs:
   gh-release:
