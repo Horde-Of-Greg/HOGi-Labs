@@ -12,6 +12,7 @@ public class LabsMaterials {
     public static Material NaquadahLight;
     public static Material NaquadahHeavy;
     public static Material NaquadahSuperheavy;
+    public static Material Crocoite;
 
     // Second degree materials 10000-10999
     public static Material LumiumPalladium;
@@ -21,9 +22,11 @@ public class LabsMaterials {
     public static Material NaquadahSolutionHeavy;
     public static Material NaquadahSolutionSuperheavy;
     public static Material HydrogenFluoride;
+    public static Material ChromicAcid;
 
     // Third degree materials 11000-11999
     public static Material IndustrialLubricant;
+    public static Material CrocoiteSolution;
 
     private LabsMaterials() {}
 

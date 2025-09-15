@@ -18,6 +18,18 @@
       "textures": {
         "all": "gregtech:blocks/casings/large_active_multiblock_casing/engine_intake/caterpillar_engine_intake_active"
       }
+    },
+    "active=false,variant=bronze_air_intake": {
+      "model": "minecraft:cube_all",
+      "textures": {
+        "all": "gregtech:blocks/casings/large_active_multiblock_casing/engine_intake/bronze_air_intake"
+      }
+    },
+    "active=true,variant=bronze_air_intake": {
+      "model": "minecraft:cube_all",
+      "textures": {
+        "all": "gregtech:blocks/casings/large_active_multiblock_casing/engine_intake/bronze_air_intake_active"
+      }
     }
   }
 }

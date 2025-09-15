@@ -1,11 +1,13 @@
 package com.hordeofgreg.hogilabs.common;
 
+import java.io.IOException;
 import java.util.Objects;
 import java.util.function.Function;
 
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
+import net.minecraft.item.crafting.IRecipe;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -15,6 +17,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.hordeofgreg.hogilabs.Tags;
+import com.hordeofgreg.hogilabs.api.recipes.LabsRecipeMaps;
+import com.hordeofgreg.hogilabs.api.worldgen.CustomOreVeins;
 import com.hordeofgreg.hogilabs.common.blocks.LabsMetaBlocks;
 import com.hordeofgreg.hogilabs.config.LabsConfig;
 
@@ -25,7 +29,13 @@ public class CommonProxy {
 
     public static final Logger LOGGER = LogManager.getLogger(Tags.MODID);
 
-    public void preLoad() {}
+    public void preInit() {}
+
+    public void init() {}
+
+    public void postInit() throws IOException {
+        CustomOreVeins.init();
+    }
 
     @SubscribeEvent
     public static void registerBlocks(RegistryEvent.Register<Block> event) {
@@ -49,6 +59,15 @@ public class CommonProxy {
         registry.register(createItemBlock(LabsMetaBlocks.LARGE_MULTIBLOCK_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(LabsMetaBlocks.LARGE_ACTIVE_MULTIBLOCK_CASING, VariantItemBlock::new));
         registry.register(createItemBlock(LabsMetaBlocks.WIRE_COIL, VariantItemBlock::new));
+    }
+
+    @SubscribeEvent
+    public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
+        if (LabsConfig.advanced.activateVerboseLogging) {
+            LOGGER.info("Registering recipes...");
+        }
+
+        LabsRecipeMaps.modifyMaps();
     }
 
     private static <T extends Block> ItemBlock createItemBlock(T block, Function<T, ItemBlock> producer) {

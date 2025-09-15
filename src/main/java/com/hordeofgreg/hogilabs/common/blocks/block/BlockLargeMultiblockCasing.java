@@ -34,9 +34,11 @@ public class BlockLargeMultiblockCasing extends VariantBlock<BlockLargeMultibloc
 
         // Solid casings
         CATERPILLAR_CASING("caterpillar_casing"),
+        CRUDE_STAINLESS_STEEL_CASING("crude_stainless_steel_casing"),
 
         // Pipe casings
-        CATERPILLAR_PIPE_CASING("caterpillar_pipe_casing");
+        CATERPILLAR_PIPE_CASING("caterpillar_pipe_casing"),
+        BRONZE_GRATE_CASING("bronze_grate_casing");
 
         private final String name;
 

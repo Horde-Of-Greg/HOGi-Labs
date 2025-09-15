@@ -34,7 +34,8 @@ public class BlockLargeActiveMultiblockCasing extends
     public enum ActiveCasingType implements IStringSerializable {
 
         // Regular casings
-        CATERPILLAR_ENGINE_INTAKE("caterpillar_engine_intake");
+        CATERPILLAR_ENGINE_INTAKE("caterpillar_engine_intake"),
+        BRONZE_AIR_INTAKE("bronze_air_intake");
 
         private final String name;
 

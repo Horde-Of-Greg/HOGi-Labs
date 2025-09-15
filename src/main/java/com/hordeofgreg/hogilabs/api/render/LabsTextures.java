@@ -5,6 +5,7 @@ import net.minecraftforge.fml.relauncher.Side;
 
 import com.hordeofgreg.hogilabs.Tags;
 
+import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import gregtech.client.renderer.texture.cube.SimpleOverlayRenderer;
 
 @Mod.EventBusSubscriber(modid = Tags.MODID, value = Side.CLIENT)
@@ -13,6 +14,15 @@ public final class LabsTextures {
     // Casings
     public static SimpleOverlayRenderer CATERPILLAR_CASING;
     public static SimpleOverlayRenderer CATERPILLAR_PIPE_CASING;
+    public static SimpleOverlayRenderer CRUDE_STAINLESS_STEEL_CASING;
+    public static SimpleOverlayRenderer BRONZE_GRATE_CASING;
+
+    // Multiblock Controller Overlays
+    public static OrientedOverlayRenderer PANNER_OVERLAY;
+
+    // Generic Overlays
+
+    // Solid Coils
 
     private LabsTextures() {}
 
@@ -21,5 +31,13 @@ public final class LabsTextures {
         CATERPILLAR_CASING = new SimpleOverlayRenderer("casings/large_multiblock_casing/solid/caterpillar_casing");
         CATERPILLAR_PIPE_CASING = new SimpleOverlayRenderer(
                 "casings/large_multiblock_casing/pipe/caterpillar_pipe_casing");
+        CRUDE_STAINLESS_STEEL_CASING = new SimpleOverlayRenderer(
+                "casings/large_multiblock_casing/solid/crude_stainless_steel_casing");
+        BRONZE_GRATE_CASING = new SimpleOverlayRenderer(
+                "casings/large_multiblock_casing/pipe/machine_casing_bronze_grate");
+
+        // Multiblock Controller Overlays
+        PANNER_OVERLAY = new OrientedOverlayRenderer(
+                "multiblock/primitive/panner");
     }
 }
