@@ -5,6 +5,7 @@ import net.minecraftforge.fml.relauncher.Side;
 
 import com.hordeofgreg.hogilabs.Tags;
 
+import gregtech.client.renderer.texture.cube.OrientedOverlayRenderer;
 import gregtech.client.renderer.texture.cube.SimpleOverlayRenderer;
 
 @Mod.EventBusSubscriber(modid = Tags.MODID, value = Side.CLIENT)
@@ -17,6 +18,7 @@ public final class LabsTextures {
     public static SimpleOverlayRenderer BRONZE_GRATE_CASING;
 
     // Multiblock Controller Overlays
+    public static OrientedOverlayRenderer PANNER_OVERLAY;
 
     // Generic Overlays
 
@@ -35,5 +37,7 @@ public final class LabsTextures {
                 "casings/large_multiblock_casing/pipe/machine_casing_bronze_grate");
 
         // Multiblock Controller Overlays
+        PANNER_OVERLAY = new OrientedOverlayRenderer(
+                "multiblock/primitive/panner");
     }
 }

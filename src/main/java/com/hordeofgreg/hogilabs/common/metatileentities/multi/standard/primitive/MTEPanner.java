@@ -8,6 +8,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import org.jetbrains.annotations.NotNull;
 
 import com.hordeofgreg.hogilabs.api.recipes.LabsRecipeMaps;
+import com.hordeofgreg.hogilabs.api.render.LabsTextures;
 import com.hordeofgreg.hogilabs.common.blocks.LabsMetaBlocks;
 import com.hordeofgreg.hogilabs.common.blocks.block.BlockLargeMultiblockCasing;
 
@@ -76,19 +77,19 @@ public class MTEPanner extends RecipeMapPrimitiveMultiblockController {
     @Override
     protected @NotNull BlockPattern createStructurePattern() {
         return FactoryBlockPattern.start()
-                .aisle("FBBBF", "FHHHF", "F###F", "F###F", "FFFFF", "FHHHF")
-                .aisle("BBBBB", "HAAAH", "#AAA#", "#AAA#", "FGGGF", "HAAAH")
-                .aisle("BBBBB", "HAAAH", "#AAA#", "#AAA#", "FGGGF", "HAAAH")
-                .aisle("BBBBB", "HAAAH", "#AAA#", "#AAA#", "FGGGF", "HAAAH")
-                .aisle("FBBBF", "FOSOF", "F###F", "F###F", "FFFFF", "FHIHF")
+                .aisle("FHHHF", "FHHHF", "F###F", "F###F", "FFFFF", "FHHHF")
+                .aisle("HHHHH", "HAAAH", "#AAA#", "#AAA#", "FGGGF", "HAAAH")
+                .aisle("HHHHH", "HAAAH", "#AAA#", "#AAA#", "FGGGF", "HAAAH")
+                .aisle("HHHHH", "HAAAH", "#AAA#", "#AAA#", "FGGGF", "HAAAH")
+                .aisle("FHHHF", "FOSOF", "F###F", "F###F", "FFFFF", "FHIHF")
                 .where('S', selfPredicate())
                 .where('H', states(getCasingState()))
                 .where('O', states(getCasingState())
                         .or(abilities(MultiblockAbility.EXPORT_ITEMS)).setMaxGlobalLimited(1)
                         .or(abilities(MultiblockAbility.EXPORT_FLUIDS)).setMaxGlobalLimited(1))
                 .where('I', abilities(MultiblockAbility.IMPORT_FLUIDS))
-                .where('B', states(getBrickedCasingState()))
-                .where('F', frames(Materials.Bronze))
+                .where('B', states(getCasingState()))
+                .where('F', frames(Materials.Steel).or(frames(Materials.Bronze)))
                 .where('G', states(getGrateCasingState()))
                 .where('A', air())
                 .where('#', any())
@@ -96,11 +97,7 @@ public class MTEPanner extends RecipeMapPrimitiveMultiblockController {
     }
 
     private static IBlockState getCasingState() {
-        return MetaBlocks.STEAM_CASING.getState(BlockSteamCasing.SteamCasingType.BRONZE_HULL);
-    }
-
-    private static IBlockState getBrickedCasingState() {
-        return MetaBlocks.STEAM_CASING.getState(BlockSteamCasing.SteamCasingType.BRONZE_BRICKS_HULL);
+        return MetaBlocks.METAL_CASING.getState(BlockMetalCasing.MetalCasingType.STEEL_SOLID);
     }
 
     private static IBlockState getGrateCasingState() {
@@ -111,7 +108,7 @@ public class MTEPanner extends RecipeMapPrimitiveMultiblockController {
     @SideOnly(Side.CLIENT)
     @Override
     public ICubeRenderer getBaseTexture(IMultiblockPart sourcePart) {
-        return Textures.STEAM_CASING_BRONZE;
+        return Textures.SOLID_STEEL_CASING;
     }
 
     @SideOnly(Side.CLIENT)
@@ -125,7 +122,7 @@ public class MTEPanner extends RecipeMapPrimitiveMultiblockController {
     @SideOnly(Side.CLIENT)
     @Override
     protected @NotNull ICubeRenderer getFrontOverlay() {
-        return Textures.PRIMITIVE_BLAST_FURNACE_OVERLAY;
+        return LabsTextures.PANNER_OVERLAY;
     }
 
     @Override
